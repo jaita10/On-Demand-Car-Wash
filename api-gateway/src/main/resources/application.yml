@@ -1,0 +1,40 @@
+server:
+  port: 8100
+  
+spring:
+  config.import: configserver:http://localhost:8888/
+  application.name: api-gateway
+  main.web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+          - Path=/orders/**
+#        - id: ratingsservice1
+#          uri: lb://ratings-data-service
+#          predicates:
+#          - Path=/ratingsdata/movies/**
+#        - id: ratingsservice2
+#          uri: lb://ratings-data-service
+#          predicates:
+#          - Path=/ratingsdata/user/**
+        - id: washer-service
+          uri: lb://WASH-PACK-SERVICE
+          predicates:
+          - Path=/washers/**
+        - id: dicovery-server
+          uri: http://localhost:${eureka.port:8761}
+          predicates:
+          - Path=/
+ #config.import: configserver:http://localhost:8888
+  
+management:
+  endpoints:
+    web.exposure.include: health,info,refresh
+    
+eureka:
+  port: 8761
+
+  

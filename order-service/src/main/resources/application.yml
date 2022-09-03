@@ -1,0 +1,9 @@
+server.port: 8082
+
+spring.application.name: ORDER-SERVICE
+spring.config.import: configserver:http://localhost:8888/
+
+spring.data.mongodb.uri: mongodb+srv://jaita:password%401234@jaitacluster.milmndm.mongodb.net/?
+spring.data.mongodb.database: OrderDatabase
+
+
