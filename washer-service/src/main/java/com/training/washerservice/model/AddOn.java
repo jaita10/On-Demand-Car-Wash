@@ -3,13 +3,21 @@ package com.training.washerservice.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Details about the Add On")
 @Document(collection="AddOn")
 public class AddOn {
-
+	
+    @ApiModelProperty(notes = "The unique id of the add on")
     @Id
     String addonId;
+    @ApiModelProperty(notes = "The title of the add on")
     String addonTitle;
+    @ApiModelProperty(notes = "The description of the add on")
     String addonDescription;
+    @ApiModelProperty(notes = "The price of the add on")
     int addonPrice;
     
 	public AddOn() {

@@ -3,8 +3,10 @@ package com.training.washerservice.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,7 +46,7 @@ public class WasherController {
 		
 	}
 	
-	@PostMapping("/WashPack/update")
+	@PutMapping("/WashPack/update")
 	public ResponseEntity<String> updateWashPack(@RequestBody WashPack washer) {
 		boolean updated = washservice.updateWashPack(washer);
 		if(updated) {
@@ -54,7 +56,7 @@ public class WasherController {
 		return new ResponseEntity<String> ("WashPack cannot be updated", HttpStatus.BAD_REQUEST);
 	}
 	
-	@PostMapping("/WashPack/delete")  //PostMapping or DeleteMapping
+	@DeleteMapping("/WashPack/delete")  
 	public ResponseEntity<String> deleteWashPack(@RequestBody StringList stringList) {
 		boolean deleted = washservice.deleteWashPack(stringList);
 		if(deleted) {
@@ -87,7 +89,7 @@ public class WasherController {
 		
 	}
 	
-	@PostMapping("/AddOn/update")
+	@PutMapping("/AddOn/update")
 	public ResponseEntity<String> updateAddOn(@RequestBody AddOn addon) {
 		boolean updated = addonservice.updateAddOn(addon);
 		if(updated) {
@@ -97,7 +99,7 @@ public class WasherController {
 		return new ResponseEntity<String> ("AddOn cannot be updated", HttpStatus.BAD_REQUEST);
 	}
 	
-	@PostMapping("/AddOn/delete")
+	@DeleteMapping("/AddOn/delete")
 	public ResponseEntity<String> deleteAddOn(@RequestBody StringList stringList) {
 		boolean deleted = addonservice.deleteAddOn(stringList);
 		if(deleted) {
