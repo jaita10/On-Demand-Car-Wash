@@ -1,0 +1,12 @@
+server.port: 8083
+
+spring:
+ application:
+  name: USER-SERVICE
+ config.import: configserver:http://localhost:8888/
+ data.mongodb:
+  uri: mongodb+srv://jaita:password%401234@jaitacluster.milmndm.mongodb.net/?
+  database: UserDatabase
+ mvc:
+  pathmatch:
+   matching-strategy: ANT_PATH_MATCHER

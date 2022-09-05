@@ -20,8 +20,8 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired
 	OrderRepository orderRepo;
 	
-	public void setRepository(OrderRepository orderRepo) {
-		this.orderRepo = orderRepo;
+	public void setRepository(OrderRepository orderRepository) {
+		this.orderRepo = orderRepository;
 	}
 	
 	public void validateOrder(Order order) throws Exception {

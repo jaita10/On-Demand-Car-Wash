@@ -12,6 +12,10 @@ spring:
           uri: lb://ORDER-SERVICE
           predicates:
           - Path=/orders/**
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+          - Path=/users/**
 #        - id: ratingsservice1
 #          uri: lb://ratings-data-service
 #          predicates:
