@@ -8,18 +8,12 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-import io.swagger.annotations.Api;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
 
 @SpringBootApplication
 @EnableEurekaClient
 @EnableMongoRepositories
-@EnableSwagger2
 public class OrderServiceApplication {
 
 	public static void main(String[] args) {
@@ -27,27 +21,34 @@ public class OrderServiceApplication {
 	}
 	
 	@Bean
-	public Docket getDocket() {
-		return new Docket(DocumentationType.SWAGGER_2)
-				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.training.washerservice"))
-				.paths(PathSelectors.ant("/washers/**"))
-				.build()
-				.apiInfo(apiDetails());
-		
+	public OpenAPI springShopOpenAPI() {
+		return new OpenAPI().info(new Info().title("Order Service API")
+				.description("Service for communication with the Order Database").version("v0.0.1"));
 	}
 	
-	private ApiInfo apiDetails ( ) {
-	    return new ApiInfo (
-	            " CAR WASH " ,
-	            " Order Service " ,
-	            " 1.0 " ,
-	            " Free to use " ,
-	            new springfox.documentation.service.Contact ( " Jaita Kapuria " , "" , " jaitakapuria10@gmail.com" ) ,
-	            " API License " ,
-	            " " , //for the website which is mandatory here
-	            Collections.emptyList ( ) ) ;
-
-	}
+//	@Bean
+//	public Docket getDocket() {
+//		return new Docket(DocumentationType.SWAGGER_2)
+//				.select()
+//				.apis(RequestHandlerSelectors.basePackage("com.training.washerservice"))
+//				.paths(PathSelectors.ant("/washers/**"))
+//				.build()
+//				.apiInfo(null);
+////				.apiInfo(apiDetails());
+//		
+//	}
+//	
+//	private ApiInfo apiDetails ( ) {
+//	    return new ApiInfo (
+//	            " CAR WASH " ,
+//	            " Order Service " ,
+//	            " 1.0 " ,
+//	            " Free to use " ,
+//	            new springfox.documentation.service.Contact ( " Jaita Kapuria " , "" , " jaitakapuria10@gmail.com" ) ,
+//	            " API License " ,
+//	            " " , //for the website which is mandatory here
+//	            Collections.emptyList ( ) ) ;
+//
+//	}
 
 }

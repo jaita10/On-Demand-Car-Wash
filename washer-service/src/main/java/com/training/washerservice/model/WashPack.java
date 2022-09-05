@@ -3,21 +3,16 @@ package com.training.washerservice.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-@ApiModel(description = "Details about the Wash Pack")
 @Document(collection="WashPack")
 public class WashPack {
 
-    @ApiModelProperty(notes = "The unique id of the wash pack")
 	@Id
     String washpackId;
-    @ApiModelProperty(notes = "The title of the wash pack")
+
     String washpackTitle;
-    @ApiModelProperty(notes = "The description of the wash pack")
+
     String washpackDescription;
-    @ApiModelProperty(notes = "The price of the wash pack")
+
     int washpackPrice;
     
 	public WashPack() {

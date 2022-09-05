@@ -3,11 +3,7 @@ package com.training.washerservice.wrapper;
 import java.util.List;
 
 import com.training.washerservice.model.AddOn;
-import com.training.washerservice.model.WashPack;
 
-import io.swagger.annotations.ApiModel;
-
-@ApiModel(description = "Details about the List of AddOns")
 public class AddOnList {
 	
 	public List<AddOn> addonList;

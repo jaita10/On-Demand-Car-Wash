@@ -4,9 +4,6 @@ import java.util.List;
 
 import com.training.washerservice.model.WashPack;
 
-import io.swagger.annotations.ApiModel;
-
-@ApiModel(description = "Details about the List of WashPacks")
 public class WashPackList {
 	
 	public List<WashPack> washpackList;
