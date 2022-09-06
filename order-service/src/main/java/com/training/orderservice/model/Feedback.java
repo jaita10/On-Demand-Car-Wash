@@ -38,6 +38,6 @@ public class Feedback {
 		return false;
 		
 	}
-	
+	//validate the rating using string otherwise it will give an exception message through exception package
 
 }

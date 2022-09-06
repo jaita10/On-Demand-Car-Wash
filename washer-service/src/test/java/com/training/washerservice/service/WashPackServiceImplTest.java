@@ -141,7 +141,7 @@ class WashPackServiceImplTest {
 			addOn.setAddonTitle("AC Disinfectant");
 			addOn.setAddonDescription("The aim of this service is to clean and sanitize the air conditioning compartment of the car.");
 			addOn.setAddonPrice(100);
-			when(addOnService.addonRepo.save(addOn)).thenReturn(addOn);
+			when(addOnService.addOnRepo.save(addOn)).thenReturn(addOn);
 			boolean validPriceIsSaved = addOnService.insertAddOn(addOn);
 			addOn.setAddonPrice(40);
 			boolean invalidPriceIsSaved = addOnService.insertAddOn(addOn);
@@ -167,7 +167,7 @@ class WashPackServiceImplTest {
 			addOn.setAddonPrice(400);
 			allAddOns.add(addOn); //dummy data
 			
-			when(addOnService.addonRepo.findAll()).thenReturn(allAddOns);
+			when(addOnService.addOnRepo.findAll()).thenReturn(allAddOns);
 			AddOnList actualAddOnList = addOnService.getAllAddOns(); //saving the new return value of the method that has been tested 
 			
 			AddOnList expectedAddOnList = new AddOnList(allAddOns);
@@ -182,12 +182,12 @@ class WashPackServiceImplTest {
 			stringList.add("jshd76sdbhjsdf");
 			stringList.add("jfvhijhd7wqhg");
 			stringList.add("nst76cbhjc");
-			when(addOnService.addonRepo.countByAddOnId("jshd76sdbhjsdf")).thenReturn(1L);
-			when(addOnService.addonRepo.countByAddOnId("jfvhijhd7wqhg")).thenReturn(2L);
-			when(addOnService.addonRepo.countByAddOnId("nst76cbhjc")).thenReturn(3L);
+			when(addOnService.addOnRepo.countByAddOnId("jshd76sdbhjsdf")).thenReturn(1L);
+			when(addOnService.addOnRepo.countByAddOnId("jfvhijhd7wqhg")).thenReturn(2L);
+			when(addOnService.addOnRepo.countByAddOnId("nst76cbhjc")).thenReturn(3L);
 			boolean validIds = addOnService.deleteAddOn(stringList);
 			stringList.add("76vhgvhfyt76t");
-			when(addOnService.addonRepo.countByAddOnId("76vhgvhfyt76t")).thenReturn(0L);
+			when(addOnService.addOnRepo.countByAddOnId("76vhgvhfyt76t")).thenReturn(0L);
 			boolean invalidId = addOnService.deleteAddOn(stringList);
 			assertAll(
 					()-> assertTrue(validIds,"Here the correct ids are getting validated for the deletion of the add-on"),
@@ -200,7 +200,7 @@ class WashPackServiceImplTest {
 		@DisplayName("Test for Updation of AddOn")
 		void testUpdateAddOn() {
 			AddOn addOn = new AddOn("ghbjhgu876","AC Disinfectant","The aim of this service is to clean and sanitize the air conditioning compartment of the car.",100);
-			when(addOnService.addonRepo.countByAddOnId("ghbjhgu876")).thenReturn(2L);
+			when(addOnService.addOnRepo.countByAddOnId("ghbjhgu876")).thenReturn(2L);
 			boolean validDetails = addOnService.updateAddOn(addOn);
 			addOn.setAddonPrice(40);
 			boolean invalidPriceIsSaved = addOnService.updateAddOn(addOn);

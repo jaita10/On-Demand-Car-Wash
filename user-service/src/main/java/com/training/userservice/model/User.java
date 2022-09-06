@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.training.userservice.exception.InvalidEmailException;
+import com.training.userservice.exception.InvalidPhoneNumberException;
 import com.training.userservice.exception.InvalidRoleException;
 
 @Document(collection="USER")
@@ -18,12 +20,14 @@ public class User {
 	private String email;
 	private String password;
 	private String role;
+	private String phoneNumber;
 	
 	private static List<String> validUserRoles = Arrays.asList("CUSTOMER" , "WASHER" , "ADMIN");
 	
 	public User() {}
 
-	public User(String userId, String firstName, String lastName, String email, String password, String role) {
+	public User(String userId, String firstName, String lastName, String email, String password, String role,
+			String phoneNumber) {
 		super();
 		this.userId = userId;
 		this.firstName = firstName;
@@ -31,6 +35,7 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.role = role;
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getUserId() {
@@ -81,15 +86,42 @@ public class User {
 		this.role = role;
 	}
 	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	
+	
 	
 	public void validateRole() throws InvalidRoleException{
-		if(!validUserRoles.contains(this.role)) {
-			throw new InvalidRoleException(role);
+		if(validUserRoles.contains(this.role)) {
+			return;
 		}
+		throw new InvalidRoleException(this.role);
 	}
+	
 	
 	public boolean validateRoles(){
 		return validUserRoles.contains(this.role);
+	}
+	
+	
+	public void validateEmail() throws InvalidEmailException{
+		if(this.email.matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")){
+			return;
+		}
+		throw new InvalidEmailException(this.email);
+	}
+	
+	
+	public void validatePhoneNumber() throws InvalidPhoneNumberException{
+		if(this.phoneNumber.matches("^[1-9][0-9]{9}$")) {
+			return;
+		}
+		throw new InvalidPhoneNumberException(this.phoneNumber);
 	}
 	
 	

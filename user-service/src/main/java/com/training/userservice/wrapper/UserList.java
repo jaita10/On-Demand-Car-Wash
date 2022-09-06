@@ -9,9 +9,7 @@ public class UserList {
 	
 	List<User> userList = new ArrayList<>();
 
-	public UserList() {
-		
-	}
+	public UserList() {}
 	
 	public UserList(List<User> userList) {
 		this.userList = userList;

@@ -7,9 +7,7 @@ public class StringList {
 	
 	private List<String> stringList = new ArrayList<>();
 	
-	public StringList() {
-		
-	}
+	public StringList() {}
 	
 	public StringList(List<String> stringList) {
 		this.stringList = stringList;

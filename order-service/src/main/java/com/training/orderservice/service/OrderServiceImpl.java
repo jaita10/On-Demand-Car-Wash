@@ -3,6 +3,7 @@ package com.training.orderservice.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import com.training.orderservice.exceptions.BookedForThePastException;
@@ -20,8 +21,15 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired
 	OrderRepository orderRepo;
 	
+	@Autowired
+	MongoTemplate mongoTemplate;
+	
 	public void setRepository(OrderRepository orderRepository) {
 		this.orderRepo = orderRepository;
+	}
+	
+	public boolean doesExists(String orderId) {
+		return orderRepo.existsById(orderId);
 	}
 	
 	public void validateOrder(Order order) throws Exception {

@@ -1,9 +1,9 @@
 package com.training.washerservice.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import com.training.washerservice.model.Filter;
@@ -18,10 +18,18 @@ public class WashPackServiceImpl implements WashPackService{
 	@Autowired
 	public WashPackRepository washrepo;
 	
+	@Autowired
+	MongoTemplate mongoTemplate;
+	
 	public void setRepository(WashPackRepository washPackRepository) {
 		this.washrepo = washPackRepository;
 	}
-
+	
+	public boolean doesExists(String washPackId) {
+		return washrepo.existsById(washPackId);
+	}
+	
+	
 	public boolean addWasher(WashPack washer) {
 		if(validateWashPack(washer)) {
 			washrepo.save(washer);
