@@ -1,6 +1,7 @@
 package com.training.userservice.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -85,8 +86,8 @@ public class UserServiceImpl implements UserService{
 	
 	
 	
-	public User getUserByUsername(String username) {
-		return null;
+	public Optional<User> getUserByUsername(String username) {
+		return userRepo.findByUsername(username);
 	}
 	
 

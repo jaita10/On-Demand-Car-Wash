@@ -20,6 +20,9 @@ public class CarServiceImpl implements CarService{
 	@Autowired
 	MongoTemplate mongoTemplate;
 	
+	@Autowired
+	UserService userService;
+	
 	public void setRepository(CarRepository carRepository) {
 		this.carRepo = carRepository;
 	}
@@ -37,6 +40,7 @@ public class CarServiceImpl implements CarService{
 		try {
 			car.validateCarTypes();
 			car.validateCarNumber();
+			car.validateCarColor();
 		} catch (Exception e) {
 			throw e;
 		}
@@ -51,6 +55,7 @@ public class CarServiceImpl implements CarService{
 		try {
 			validateCar(car);
 			carRepo.save(car);
+//			userService.addCarToUser(car.getCustomerId(), car.getCarId())  ;
 			return "Car saved successfully";
 		}catch(Exception e) {
 			return e.getMessage();
@@ -75,13 +80,13 @@ public class CarServiceImpl implements CarService{
 		}
 	}
 
-	public boolean deleteCars(StringList stringList) {
+	public String deleteCars(StringList stringList) {
 		for (String carId : stringList.getStringList()) {
 			if (!carRepo.existsById(carId))
-				return false;
+				return "Cars with the mentioned ids does not exist" ;
 		}
 		carRepo.deleteAllById(stringList.getStringList());
-		return true;
+		return "Cars with the mentioned ids are deleted successfully";
 	}
 	
 	

@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.training.userservice.exception.InvalidCarColorException;
 import com.training.userservice.exception.InvalidCarNumberException;
 import com.training.userservice.exception.InvalidCarTypeException;
-import com.training.userservice.exception.InvalidRoleException;
 
 @Document(collection="CARS")
 public class Car {
@@ -17,19 +17,19 @@ public class Car {
 	private String carId;
 	private String customerId;
 	private String carType;
-	private String color;
+	private String carColor;
 	private String carNumber;
 	
 	private static List<String> validCarTypes = Arrays.asList("SEDAN" , "SUV" , "LUXURY" , "PREMIUM" , "EXOTIC" , "MUV" , "HATCHBACK" );
 	
 	public Car() {}
 
-	public Car(String carId, String customerId, String carType, String color, String carNumber) {
+	public Car(String carId, String customerId, String carType, String carColor, String carNumber) {
 		super();
 		this.carId = carId;
 		this.customerId = customerId;
 		this.carType = carType;
-		this.color = color;
+		this.carColor = carColor;
 		this.carNumber = carNumber;
 	}
 
@@ -57,12 +57,12 @@ public class Car {
 		this.carType = carType;
 	}
 
-	public String getColor() {
-		return color;
+	public String getCarColor() {
+		return carColor;
 	}
 
-	public void setColor(String color) {
-		this.color = color;
+	public void setCarColor(String carColor) {
+		this.carColor = carColor;
 	}
 
 	public String getCarNumber() {
@@ -92,7 +92,12 @@ public class Car {
 	}
 	
 	
-	
+	public void validateCarColor() throws InvalidCarColorException{
+		if(this.carColor.matches("^#[A-F0-9]{6}")) {
+			return;
+		}
+		throw new InvalidCarColorException(this.carColor);
+	}
 	
 	
 	
