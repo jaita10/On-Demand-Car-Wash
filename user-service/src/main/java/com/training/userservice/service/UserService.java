@@ -18,7 +18,7 @@ public interface UserService {
 
 	public boolean deleteUsers(StringList stringList);
 	
-	public Optional<User> getUserByUsername(String username);
+	public User getUserByUsername(String username);
 	
 
 

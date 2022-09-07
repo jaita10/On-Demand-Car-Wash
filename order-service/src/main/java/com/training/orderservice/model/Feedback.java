@@ -5,11 +5,9 @@ public class Feedback {
 	String review;
 	int rating;
 	
-	public Feedback() {
-		
-	}
+	public Feedback() {}
 
-	public Feedback(String review, int rating) {
+	public Feedback(int rating, String review) {
 		super();
 		this.review = review;
 		this.rating = rating;

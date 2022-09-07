@@ -22,7 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 		
 		com.training.userservice.model.User user;
 		try {
-			user = userService.getUserByUsername(username).get();
+			user = userService.getUserByUsername(username);
 			return new User(user.getEmail() , user.getPassword() , new ArrayList<>());
 			
 		} catch (Exception e) {

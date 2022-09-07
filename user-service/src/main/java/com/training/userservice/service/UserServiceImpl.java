@@ -86,8 +86,12 @@ public class UserServiceImpl implements UserService{
 	
 	
 	
-	public Optional<User> getUserByUsername(String username) {
-		return userRepo.findByUsername(username);
+	public User getUserByUsername(String username) {
+		List<User> userList = userRepo.findByUsername(username);
+		if(userList.isEmpty()) {
+			return null;
+		}
+		return userList.get(0);
 	}
 	
 
