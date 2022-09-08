@@ -1,9 +1,19 @@
 package com.training.orderservice.service;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
+import com.training.orderservice.model.Feedback;
+import com.training.orderservice.model.Location;
+import com.training.orderservice.model.Order;
 import com.training.orderservice.repository.OrderRepository;
 
 class OrderServiceImplTest {
@@ -17,7 +27,55 @@ class OrderServiceImplTest {
 		orderService.setRepository(mockOrderRepository);
 	}
 
-	
+	@Test
+	@DisplayName("Test insertion of orders")
+	void testInsertOrder() {
+		Order order = new Order();
+		when(orderService.orderRepo.save(order)).thenReturn(order);
+		order.setOrderStatus("PENDING");
+		order.setLocation(new Location(45, 120));
+		String messageForValidOrder = orderService.insertOrder(order);
+		final String invalidStatus = "SOMETHING";
+		order.setOrderStatus(invalidStatus);
+		String messageForInvalidStatus = orderService.insertOrder(order);
+		order.setOrderStatus("COMPLETED");
+		String messageForNoCompletionDate = orderService.insertOrder(order);
+		order.setBookingTime(LocalDateTime.now().plusDays(1L));
+		order.setCompletionTime(LocalDateTime.now());
+		String messageForBookedForThePast = orderService.insertOrder(order);
+		order.setBookingTime(LocalDateTime.now());
+		order.setCompletionTime(LocalDateTime.now().plusDays(1L));
+		order.setOrderStatus("IN_PROCESS");
+		order.setCustomerFeedback(new Feedback(3,"A generic review"));
+		order.setWasherFeedback(new Feedback(3,"A generic review"));
+		order.setBucketsOfWaterUsed(3);
+		String messageForFeedbackNotPossible = orderService.insertOrder(order);
+		order.setOrderStatus("COMPLETED");
+		order.setCustomerFeedback(new Feedback(8,"A generic review"));
+		order.setWasherFeedback(new Feedback(3,"A generic review"));
+		String messageForInvalidCustomerRating = orderService.insertOrder(order);
+		order.setCustomerFeedback(new Feedback(3,"A generic review"));
+		order.setWasherFeedback(new Feedback(8,"A generic review"));
+		String messageForInvalidWasherRating = orderService.insertOrder(order);
+		order.setWasherFeedback(new Feedback(4,"A generic review"));
+//		order.setLocation(new Location(100,120));
+//		String messageForInvalidLatitude = orderService.insertOrder(order);
+//		order.setLocation(new Location(50,200));
+//		String messageForInvalidLongitude = orderService.insertOrder(order);
+		
+		assertAll(
+				() -> assertEquals("Order saved successfully", messageForValidOrder),
+				() -> assertEquals(invalidStatus+" is not a valid value for the status of an order", messageForInvalidStatus),
+				() -> assertEquals("An order that has been COMPLETED must have a completion time", messageForNoCompletionDate),
+				() -> assertEquals("An order can not be scheduled for a date in the past", messageForBookedForThePast),
+				() -> assertEquals("Incomplete orders can not contain feedback or amount of water used", messageForFeedbackNotPossible),
+				() -> assertEquals("The rating given by the customer is out of the [1,5] range", messageForInvalidCustomerRating),
+				() -> assertEquals("The rating given by the washer is out of the [1,5] range", messageForInvalidWasherRating)
+//				() -> assertEquals("The given location's latitude is out of the [-90,90] range", messageForInvalidLatitude),
+//				() -> assertEquals("The given location's longitude is out of the [-180,180] range", messageForInvalidLongitude)
+			);
+
+	}
 	
 	
 }
