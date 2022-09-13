@@ -1,5 +1,5 @@
 package com.training.adminservice.exceptions;
 
-public class validateExistenceOfIds {
+public class jbjh {
 
 }

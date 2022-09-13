@@ -36,7 +36,7 @@ public class ReportServiceImpl implements ReportService {
 	
 	public void validateReport(Report report) throws Exception {
 		try {
-				validateExistenceOfIds(report);
+				validateExistenceOfIds(report);  //needs to understand this part
 		} catch (Exception e) {
 			throw e;
 		}

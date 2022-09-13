@@ -16,14 +16,10 @@ spring:
           uri: lb://USER-SERVICE
           predicates:
           - Path=/users/**
-#        - id: ratingsservice1
-#          uri: lb://ratings-data-service
-#          predicates:
-#          - Path=/ratingsdata/movies/**
-#        - id: ratingsservice2
-#          uri: lb://ratings-data-service
-#          predicates:
-#          - Path=/ratingsdata/user/**
+        - id: admin-service
+          uri: lb://ADMIN-SERVICE
+          predicates:
+          - Path=/report/**
         - id: washer-service
           uri: lb://WASH-PACK-SERVICE
           predicates:

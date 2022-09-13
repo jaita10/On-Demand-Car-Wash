@@ -27,6 +27,7 @@ class OrderServiceImplTest {
 		orderService.setRepository(mockOrderRepository);
 	}
 
+	
 	@Test
 	@DisplayName("Test insertion of orders")
 	void testInsertOrder() {
@@ -76,6 +77,7 @@ class OrderServiceImplTest {
 			);
 
 	}
+	
 	
 	
 }

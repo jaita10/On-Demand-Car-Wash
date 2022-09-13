@@ -22,6 +22,8 @@ public class User {
 	private String role;
 	private String phoneNumber;
 	
+	//list of car ids
+	
 	private static List<String> validUserRoles = Arrays.asList("CUSTOMER" , "WASHER" , "ADMIN");
 	
 	public User() {}

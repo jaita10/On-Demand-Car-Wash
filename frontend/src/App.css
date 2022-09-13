@@ -1,3 +1,7 @@
+:root {
+  --imgSide: 2em;
+}
+
 .App {
   text-align: center;
 }
@@ -32,7 +36,129 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+/* .navbar-toggler{
+  width: 90%;
+} */
+
+#form-container {
+  width: 30%;
+  margin-block-end: auto;
+  margin-left: auto;
+  background-position: right;
+}
+
+#button-container {
+  width: 10%;
+}
+
+.advert {
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 40vh;
+}
+
+#footer {
+  /* background-color: #25b37e; */
+  background-color: var(--bs-success);
+  padding: 5vh 5vh;
+  font-size: 18px;
+}
+
+.foot {
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 50vh;
+}
+
+#welcome-box {
+  margin-left: 5vw;
+  top: 10vw;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  color: aquamarine;
+}
+
+.buttonc{
+  color: aquamarine;
+  border-color: aquamarine;
+}
+
+.btn:hover{
+  background-color: rgb(175, 192, 186);
+}
+
+#login-block {
+  border-radius: 10%;
+  width: max-content;
+  top: 10vh;
+  font-family: "Bree Serif";
+  color: var(--bs-light);
+  padding: 5vh 10vh;
+  box-shadow: 0px 0px 20px black;
+  top: 25vh;
+  background-color: rgba(164, 94, 18, .5);
+}
+
+.login-input {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: lighter;
+  width: 100%;
+  padding: 5px 10px;
+  border: none;
+  border-bottom: 2px solid var(--bs-success);
+}
+
+#loginTitle{
+  box-shadow: 10px 10px 10px black;
+  background-color: rgba(0 , 0, 0 ,.7);
+}
+
+#loginBox{
+  box-shadow: 10px 10px 10px black;
+  background-color: rgba(0 , 0, 0 ,.8);
+}
+
+#loginBox:hover{
+  border-color: rgb(11, 214, 109);
+  background-color: rgb(119, 175, 155);
+}
+
+.hyper-link{
+  background-color: rgba(0 , 0, 0 ,.8);
+  color: aliceblue;
+  margin-bottom: 10vw;
+}
+
+.hyper-link:hover{
+  color: aliceblue;
+  margin-bottom: 10vw;
+  border-color: rgb(11, 214, 109);
+  color: rgb(91, 190, 155);
+}
+
+#navbox{
+  text-shadow: #0ee088;
+}
+
+#register-block {
+  border-radius: 10%;
+  width: max-content;
+  top: 10vh;
+  font-family: "Bree Serif";
+  color: var(--bs-light);
+  padding: 5vh 10vh;
+  box-shadow: 0px 0px 20px black;
+  top: 25vh;
+  background-color: rgba(164, 94, 18, .5);
+}
+
+#registerTitle{
+  box-shadow: 10px 10px 10px black;
+  background-color: rgba(0 , 0, 0 ,.7);
 }
