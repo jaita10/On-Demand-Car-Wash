@@ -27,18 +27,20 @@ class OrderServiceImplTest {
 		orderService.setRepository(mockOrderRepository);
 	}
 
-	
 	@Test
 	@DisplayName("Test insertion of orders")
 	void testInsertOrder() {
 		Order order = new Order();
+		
 		when(orderService.orderRepo.save(order)).thenReturn(order);
+		
 		order.setOrderStatus("PENDING");
 		order.setLocation(new Location(45, 120));
 		String messageForValidOrder = orderService.insertOrder(order);
 		final String invalidStatus = "SOMETHING";
 		order.setOrderStatus(invalidStatus);
 		String messageForInvalidStatus = orderService.insertOrder(order);
+		
 		order.setOrderStatus("COMPLETED");
 		String messageForNoCompletionDate = orderService.insertOrder(order);
 		order.setBookingTime(LocalDateTime.now().plusDays(1L));
@@ -46,11 +48,13 @@ class OrderServiceImplTest {
 		String messageForBookedForThePast = orderService.insertOrder(order);
 		order.setBookingTime(LocalDateTime.now());
 		order.setCompletionTime(LocalDateTime.now().plusDays(1L));
+		
 		order.setOrderStatus("IN_PROCESS");
 		order.setCustomerFeedback(new Feedback(3,"A generic review"));
 		order.setWasherFeedback(new Feedback(3,"A generic review"));
 		order.setBucketsOfWaterUsed(3);
 		String messageForFeedbackNotPossible = orderService.insertOrder(order);
+		
 		order.setOrderStatus("COMPLETED");
 		order.setCustomerFeedback(new Feedback(8,"A generic review"));
 		order.setWasherFeedback(new Feedback(3,"A generic review"));
@@ -77,7 +81,6 @@ class OrderServiceImplTest {
 			);
 
 	}
-	
 	
 	
 }

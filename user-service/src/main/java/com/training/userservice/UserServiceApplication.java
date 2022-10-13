@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.web.client.RestTemplate;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -35,5 +36,12 @@ public class UserServiceApplication {
 //				.apiInfo(null);
 //		
 //	}
+	
+	
+	@Bean
+	public RestTemplate getRestTemplate() {
+		return new RestTemplate();
+		
+	}
 
 }

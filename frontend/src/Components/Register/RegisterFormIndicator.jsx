@@ -12,10 +12,11 @@ const RegisterFormIndicator = (props) => {
     
     const message = (
         <div
-            className="row mb-2 text-danger fw-semibold"
+            className="row mb-4 text-danger fw-semibold"
             style={{ fontFamily: "sans-serif" }}
         >
-            Invalid username or password
+            {/* Invalid username or password */}
+            {props.message}
         </div>
     );
 

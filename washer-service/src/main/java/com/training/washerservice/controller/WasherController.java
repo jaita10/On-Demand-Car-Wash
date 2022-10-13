@@ -30,6 +30,13 @@ public class WasherController {
 	@Autowired
 	public AddOnService addonservice;
 	
+	
+	
+	@GetMapping("/WashPack/pass")
+	public WashPack pass(WashPack washer) {
+		return washer;
+	}
+	
 	@PostMapping("/WashPack/add")
 	public ResponseEntity<String> addWasher(@RequestBody WashPack washer) {
 		boolean saved = washservice.addWasher(washer);
@@ -70,6 +77,14 @@ public class WasherController {
 	public WashPackList getFilteredWashPacks(@RequestBody Filter filterPack) {
 		return washservice.getFilteredWashPacks(filterPack);
 		
+	}
+	
+	
+	
+	
+	@GetMapping("/AddOn/pass")
+	public AddOn pass() {
+		return new AddOn();
 	}
 	
 	

@@ -7,6 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.training.userservice.exception.InvalidEmailException;
+import com.training.userservice.exception.InvalidGenderException;
 import com.training.userservice.exception.InvalidPhoneNumberException;
 import com.training.userservice.exception.InvalidRoleException;
 
@@ -21,15 +22,22 @@ public class User {
 	private String password;
 	private String role;
 	private String phoneNumber;
-	
-	//list of car ids
+	private String gender;
+	private String dateOfBirth;
+	private String hintName;
+	private String location;
+
+	private List<String> carIds;
 	
 	private static List<String> validUserRoles = Arrays.asList("CUSTOMER" , "WASHER" , "ADMIN");
+	
+	private static List<String> validGenderRoles = Arrays.asList("FEMALE" , "MALE" , "OTHERS");
 	
 	public User() {}
 
 	public User(String userId, String firstName, String lastName, String email, String password, String role,
-			String phoneNumber) {
+			String phoneNumber, String gender, String dateOfBirth, String hintName, String location,
+			List<String> carIds) {
 		super();
 		this.userId = userId;
 		this.firstName = firstName;
@@ -38,7 +46,13 @@ public class User {
 		this.password = password;
 		this.role = role;
 		this.phoneNumber = phoneNumber;
+		this.gender = gender;
+		this.dateOfBirth = dateOfBirth;
+		this.hintName = hintName;
+		this.location = location;
+		this.carIds = carIds;
 	}
+
 
 	public String getUserId() {
 		return userId;
@@ -96,6 +110,47 @@ public class User {
 		this.phoneNumber = phoneNumber;
 	}
 	
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public String getHintName() {
+		return hintName;
+	}
+
+	public void setHintName(String hintName) {
+		this.hintName = hintName;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	
+	public List<String> getCarIds() {
+		return carIds;
+	}
+
+	public void setCarIds(List<String> carIds) {
+		this.carIds = carIds;
+	}
+	
+	
 	
 	
 	public void validateRole() throws InvalidRoleException{
@@ -126,7 +181,13 @@ public class User {
 		throw new InvalidPhoneNumberException(this.phoneNumber);
 	}
 	
-	
+	public void validateGender() throws InvalidGenderException{
+		if(validGenderRoles.contains(this.gender)) {
+			return;
+		}
+		throw new InvalidGenderException(this.gender);
+	}
+
 	
 	
 

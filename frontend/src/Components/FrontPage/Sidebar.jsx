@@ -1,45 +1,56 @@
+import { Link, useNavigate } from "react-router-dom";
+
 const Sidebar = (props) => {
+    const navigate = useNavigate();
+
+    const goTo=(path)=>{
+        navigate(path);
+    }
+    
     return (
         <div className="offcanvas offcanvas-end text-bg-dark" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
 
             <div className="offcanvas-header">
-                <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+                <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">SIDEBAR</h5>
                 <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
 
             <div className="offcanvas-body">
 
                 <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    {/* <li className="nav-item">
+                        <Link className="nav-link active" aria-current="page" to={"/"} data-bs-dismiss="offcanvas" onClick={()=>goTo("/")}>Home</Link>
+                    </li> */}
                     <li className="nav-item">
-                        <a className="nav-link active" aria-current="page" href="#">Home</a>
+                        <Link className="nav-link btn sidebutton mb-5 ms-5 mt-5" type="button" to={"/Contact"} data-bs-dismiss="offcanvas" onClick={()=>goTo("/Contact")}>Contact Us</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Contact Us</a>
+                        <Link className="nav-link btn sidebutton mb-5 ms-5 " type="button" to={"/About"} data-bs-dismiss="offcanvas" onClick={()=>goTo("/About")}>About Us</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">About Us</a>
+                        <Link className="nav-link btn sidebutton mb-5 ms-5 " type="button" to={"/Book"} data-bs-dismiss="offcanvas" onClick={()=>goTo("/Book")}>Book Now</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Book Now</a>
+                        <Link className="nav-link btn sidebutton mb-5 ms-5 " type="button" to={"/Schedule"} data-bs-dismiss="offcanvas" onClick={()=>goTo("/Schedule")}>Schedule Later</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Schedule Later</a>
+                        <Link className="nav-link btn sidebutton mb-5 ms-5 " type="button" to={"/Help"} data-bs-dismiss="offcanvas" onClick={()=>goTo("/Help")}>Help</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Help</a>
+                        <Link className="nav-link btn sidebutton mb-5 ms-5 " type="button" to={"/profile"} data-bs-dismiss="offcanvas" onClick={()=>goTo("/profile")}>Profile</Link>
                     </li>
                     {/* <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown
-                        </a>
+                        </Link>
 
                         <ul className="dropdown-menu dropdown-menu-dark">
-                            <li><a className="dropdown-item" href="#">Action</a></li>
-                            <li><a className="dropdown-item" href="#">Another action</a></li>
+                            <li><Link className="dropdown-item" to="#">Action</Link></li>
+                            <li><Link className="dropdown-item" to="#">Another action</Link></li>
                             <li>
                                 <hr className="dropdown-divider" />
                             </li>
-                            <li><a className="dropdown-item" href="#">Something else here</a></li>
+                            <li><Link className="dropdown-item" to="#">Something else here</Link></li>
                         </ul>
 
                     </li> */}

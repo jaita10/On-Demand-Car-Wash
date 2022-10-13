@@ -1,6 +1,7 @@
 package com.training.orderservice.service;
 
 import com.training.orderservice.model.Order;
+import com.training.orderservice.security.MyUserDetails;
 import com.training.orderservice.wrapper.OrderList;
 import com.training.orderservice.wrapper.StringList;
 
@@ -13,5 +14,7 @@ public interface OrderService {
 	public String updateOrder(Order order);
 
 	public boolean deleteOrders(StringList stringList);
+	
+	public MyUserDetails getUserByUsername(String username) ;
 
 }

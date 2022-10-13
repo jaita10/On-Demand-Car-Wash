@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import UserService from "../../Service/UserService";
 import FormIndicator from "./FormIndicator";
 import ShowPassword from "./ShowPassword";
 
@@ -24,10 +25,10 @@ const LoginForm = (props) => {
 
     const handleLogin = async () => {
         setIndicator("spinner");
-        // let isValid = await UserService.validateCredentials(username, password);
-        let isValid = false;
+        let isValid = await UserService.validateCredentials(username, password);
+        // let isValid = false;
         if (isValid) {
-            navigate("/user");
+            navigate("/user/profile");
         } else {
             setIndicator("message");
             setUsername("");

@@ -4,7 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.training.orderservice.exceptions.BookedForThePastException;
 import com.training.orderservice.exceptions.FeedbackNotPossibleException;
@@ -12,6 +15,8 @@ import com.training.orderservice.exceptions.InvalidStatusException;
 import com.training.orderservice.exceptions.NoCompletionDateException;
 import com.training.orderservice.model.Order;
 import com.training.orderservice.repository.OrderRepository;
+import com.training.orderservice.security.AuthenticationRequest;
+import com.training.orderservice.security.MyUserDetails;
 import com.training.orderservice.wrapper.OrderList;
 import com.training.orderservice.wrapper.StringList;
 
@@ -23,6 +28,9 @@ public class OrderServiceImpl implements OrderService{
 	
 	@Autowired
 	MongoTemplate mongoTemplate;
+	
+	@Autowired
+	RestTemplate restTemplate;
 	
 	public void setRepository(OrderRepository orderRepository) {
 		this.orderRepo = orderRepository;
@@ -102,5 +110,13 @@ public class OrderServiceImpl implements OrderService{
 		orderRepo.deleteAllById(stringList.getStringList());
 		return true;
 	}
+	
+	public MyUserDetails getUserByUsername(String username) {
+        AuthenticationRequest authRequest = new AuthenticationRequest(username,"secretsarenevertobeshared");
+        MyUserDetails userDetails = restTemplate
+                .exchange( "http://api-gateway/users/getUserDetails" , HttpMethod.POST, new HttpEntity<Object>(authRequest), MyUserDetails.class)
+                .getBody();
+        return userDetails;
+    }
 
 }

@@ -1,7 +1,4 @@
 const FeaturedCard = (props) => {
-
-
-
     return (
         <div
             className="card wash-pack-card"

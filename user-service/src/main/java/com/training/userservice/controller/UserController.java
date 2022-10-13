@@ -1,5 +1,7 @@
 package com.training.userservice.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,7 @@ import com.training.userservice.model.User;
 import com.training.userservice.security.AuthenticationRequest;
 import com.training.userservice.security.AuthenticationResponse;
 import com.training.userservice.security.JwtUtil;
+import com.training.userservice.security.MyUserDetails;
 import com.training.userservice.service.CarService;
 import com.training.userservice.service.UserService;
 import com.training.userservice.wrapper.CarList;
@@ -57,7 +60,7 @@ public class UserController {
 		if(saved.equals("User saved successfully")) {
 			return new ResponseEntity<String>(saved,HttpStatus.CREATED);
 		}
-		return new ResponseEntity<String>(saved,HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String>(saved,HttpStatus.OK);
 	}
 	
 	@GetMapping("/list")
@@ -84,8 +87,10 @@ public class UserController {
 	}
 	
 	
-	
-	
+	@GetMapping("/car/pass")
+	public Car pass() {
+		return new Car();
+	}
 	
 	
 	@PostMapping("/car/add")
@@ -144,7 +149,7 @@ public class UserController {
 		} catch (BadCredentialsException e) {
 //			throw new Exception("Incorrect Username or Password" , e);
 			return new ResponseEntity<AuthenticationResponse>(new AuthenticationResponse("Failed"),
-					HttpStatus.FORBIDDEN);
+					HttpStatus.OK);
 		}
 
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
@@ -153,7 +158,36 @@ public class UserController {
 	}
 	
 	
+	@PostMapping("/getUserDetails")
+    public ResponseEntity<MyUserDetails> verifyUser(@RequestBody AuthenticationRequest authRequest) throws Exception {
+        if(authRequest.getPassword().equals("secretsarenevertobeshared")) {
+            MyUserDetails user = userService.getUserDetailsByUsername(authRequest.getUsername());
+            return new ResponseEntity<MyUserDetails>(user, HttpStatus.OK);
+        }
+        throw new Exception("Access Denied");
+    }
 	
+	@GetMapping("/getUsers")
+	public ResponseEntity<User> getUsers(HttpServletRequest request){
+		
+		final String authorizationHeader = request.getHeader("Authorization");
+
+        String username = null;
+        String jwt = null;
+
+        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+            jwt = authorizationHeader.substring(7);
+            username = jwtUtil.extractUsername(jwt);
+        }
+        
+        User user = new User();
+        try {
+        	user = userService.getUserByUsername(username);
+        }catch(Exception e){
+        	e.printStackTrace();
+        }
+        return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
 
 	
 	

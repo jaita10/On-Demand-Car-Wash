@@ -28,6 +28,12 @@ spring:
           uri: http://localhost:${eureka.port:8761}
           predicates:
           - Path=/
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
  #config.import: configserver:http://localhost:8888
   
 management:
@@ -37,4 +43,13 @@ management:
 eureka:
   port: 8761
 
-  
+ 
+ 
+# cloud:
+#    gateway:
+#      globalcors:
+#        corsConfigurations:
+#          '[/**]':
+#            allowedOrigins: "http://localhost:3000"
+#            allowedMethods: "*"
+#            allowedHeaders: "*"

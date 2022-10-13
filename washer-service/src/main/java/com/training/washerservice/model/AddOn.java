@@ -7,14 +7,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class AddOn {
 	
     @Id
-    String addonId;
-    String addonTitle;
-    String addonDescription;
-    int addonPrice;
+    private String addonId;
+    private String addonTitle;
+    private String addonDescription;
+    private int addonPrice;
     
-	public AddOn() {
-		
-	}
+	public AddOn() {}
 
 	public AddOn(String addonId, String addonTitle, String addonDescription, int addonPrice) {
 		super();

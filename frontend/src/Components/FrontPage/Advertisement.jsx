@@ -1,6 +1,6 @@
 const Advertisement = (props) => {
     return (
-        <div className="container my-5 py-5 bg-success rounded-5">
+        <div className="container my-5 py-5 rounded-5" style={{ backgroundColor: '#cddc39'}}>
 
             <div className="row">
 
@@ -26,7 +26,7 @@ const Advertisement = (props) => {
 
             <div className="row">
 
-                <div className="col-5 ms-5 advert rounded-5 " style={{ backgroundImage: `url(./CarWash_ad2.jpg)` , backgroundSize:'100%' }} ></div>
+                <div className="col-5 ms-5 advert rounded-5 " style={{ backgroundImage: `url(./CarWash_ad2.jpg)` }} ></div>
 
                 <div className="col ms-5">
                 <div className="card-body w-75 mt-5">

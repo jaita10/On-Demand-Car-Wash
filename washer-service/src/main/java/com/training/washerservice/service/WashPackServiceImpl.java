@@ -4,11 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.training.washerservice.model.Filter;
 import com.training.washerservice.model.WashPack;
 import com.training.washerservice.repository.WashPackRepository;
+import com.training.washerservice.security.AuthenticationRequest;
+import com.training.washerservice.security.MyUserDetails;
 import com.training.washerservice.wrapper.StringList;
 import com.training.washerservice.wrapper.WashPackList;
 
@@ -20,6 +25,9 @@ public class WashPackServiceImpl implements WashPackService{
 	
 	@Autowired
 	MongoTemplate mongoTemplate;
+	
+	@Autowired
+	RestTemplate restTemplate;
 	
 	public void setRepository(WashPackRepository washPackRepository) {
 		this.washrepo = washPackRepository;
@@ -91,5 +99,13 @@ public class WashPackServiceImpl implements WashPackService{
 		List<WashPack> filterList = washrepo.getFilteredWashPacksByPrice(filterPack.getMinPrice(), filterPack.getMaxPrice());
 		return new WashPackList(filterList);
 	}
+	
+	public MyUserDetails getUserByUsername(String username) {
+        AuthenticationRequest authRequest = new AuthenticationRequest(username,"secretsarenevertobeshared");
+        MyUserDetails userDetails = restTemplate
+                .exchange( "http://api-gateway/users/getUserDetails" , HttpMethod.POST, new HttpEntity<Object>(authRequest), MyUserDetails.class)
+                .getBody();
+        return userDetails;
+    }
 	
 }

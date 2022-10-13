@@ -3,6 +3,7 @@ package com.training.userservice.service;
 import java.util.Optional;
 
 import com.training.userservice.model.User;
+import com.training.userservice.security.MyUserDetails;
 import com.training.userservice.wrapper.StringList;
 import com.training.userservice.wrapper.UserList;
 
@@ -19,6 +20,8 @@ public interface UserService {
 	public boolean deleteUsers(StringList stringList);
 	
 	public User getUserByUsername(String username);
+	
+	public MyUserDetails getUserDetailsByUsername(String username) throws Exception;
 	
 
 

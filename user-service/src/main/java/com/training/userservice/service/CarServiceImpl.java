@@ -4,10 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.training.userservice.model.Car;
 import com.training.userservice.repository.CarRepository;
+import com.training.userservice.security.AuthenticationRequest;
+import com.training.userservice.security.MyUserDetails;
 import com.training.userservice.wrapper.CarList;
 import com.training.userservice.wrapper.StringList;
 
@@ -23,6 +28,9 @@ public class CarServiceImpl implements CarService{
 	@Autowired
 	UserService userService;
 	
+	@Autowired
+	RestTemplate restTemplate;
+	
 	public void setRepository(CarRepository carRepository) {
 		this.carRepo = carRepository;
 	}
@@ -30,9 +38,6 @@ public class CarServiceImpl implements CarService{
 	public boolean doesExist(String carId) {
 		return carRepo.existsById(carId);
 	}
-	
-	
-	
 	
 	
 	
@@ -89,7 +94,13 @@ public class CarServiceImpl implements CarService{
 		return "Cars with the mentioned ids are deleted successfully";
 	}
 	
-	
+	public MyUserDetails getUserByUsername(String username) {
+        AuthenticationRequest authRequest = new AuthenticationRequest(username,"secretsarenevertobeshared");
+        MyUserDetails userDetails = restTemplate
+                .exchange( "http://api-gateway/users/getUserDetails" , HttpMethod.POST, new HttpEntity<Object>(authRequest), MyUserDetails.class)
+                .getBody();
+        return userDetails;
+    }
 	
 
 }

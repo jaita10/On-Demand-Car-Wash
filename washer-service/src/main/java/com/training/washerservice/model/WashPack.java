@@ -7,17 +7,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class WashPack {
 
 	@Id
-    String washpackId;
+    private String washpackId;
 
-    String washpackTitle;
+    private String washpackTitle;
 
-    String washpackDescription;
+    private String washpackDescription;
 
-    int washpackPrice;
+    private int washpackPrice;
     
-	public WashPack() {
-		
-	}
+	public WashPack() {}
 
 	public WashPack(String washpackId, String washpackTitle, String washpackDescription, int washpackPrice) {
 		super();
