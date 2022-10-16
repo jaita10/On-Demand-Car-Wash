@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import WashPackService from "../../Service/WashPackService";
 import RegisterFormIndicator from "../Register/RegisterFormIndicator";
 
-const WashPackAdd = (props) => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
+const WashPackUpdate = (props) => {
+  const washpack = useSelector((state) => state.washpack);
+
+  const [title, setTitle] = useState(washpack.washpackTitle);
+  const [description, setDescription] = useState(washpack.washpackDescription);
+  const [price, setPrice] = useState(washpack.washpackPrice);
 
   const [indicator, setIndicator] = useState("blank");
   const [message, setMessage] = useState("");
@@ -35,29 +38,30 @@ const WashPackAdd = (props) => {
       newMessage = "Price is mandatory";
     } else {
       setIndicator("blank");
-      console.log("WashPack added success");
-      newMessage = "Addition is successful";
+      console.log("WashPack updated success");
+      newMessage = "Updation is successful";
       return true;
     }
     setMessage(newMessage);
-    console.log("WashPack not added......");
+    console.log("WashPack not updated......");
     setIndicator("message");
-    console.log("WashPack not got added");
+    console.log("WashPack not got updated");
     return false;
   };
 
-  const handleAdd = async () => {
-    console.log("adding");
+  const handleUpdate = async () => {
+    console.log("updating");
     setIndicator("spinner");
     if (inputIsValid()) {
-      console.log("addingg......");
-      const data = await WashPackService.addWashPack({
+      console.log("updatingg......");
+      const data = await WashPackService.updateWashPack({
+        washpackId: washpack.washpackId,
         washpackTitle: title,
         washpackDescription: description,
         washpackPrice: price,
       });
-      if (data === "New WashPack saved successfully") {
-        console.log("added");
+      if (data === "WashPack updated successfully") {
+        console.log("updated");
         navigate("/user/washpacks");
       }
     }
@@ -74,7 +78,7 @@ const WashPackAdd = (props) => {
             value={title}
             type="text"
             className="login-input d-block m-auto"
-            placeholder="WashPack Title"
+            placeholder="Title"
             required={true}
           />
         </div>
@@ -85,7 +89,7 @@ const WashPackAdd = (props) => {
             value={description}
             type="text"
             className="login-input d-block m-auto"
-            placeholder="WashPack Description"
+            placeholder="Description"
           />
         </div>
       </div>
@@ -97,7 +101,7 @@ const WashPackAdd = (props) => {
             value={price}
             type="text"
             className="login-input d-block m-auto"
-            placeholder="WashPack Price"
+            placeholder="Price"
           />
         </div>
       </div>
@@ -105,12 +109,12 @@ const WashPackAdd = (props) => {
       <div className="row mb-3">
         <div className="col">
           <button
-            onClick={handleAdd}
+            onClick={handleUpdate}
             type="submit"
             className="btn btn-outline d-block m-auto fs-3 px-3 py-1 rounded text-white"
             id="packBox"
           >
-            ADD
+            UPDATE
           </button>
         </div>
       </div>
@@ -118,4 +122,4 @@ const WashPackAdd = (props) => {
   );
 };
 
-export default WashPackAdd;
+export default WashPackUpdate;

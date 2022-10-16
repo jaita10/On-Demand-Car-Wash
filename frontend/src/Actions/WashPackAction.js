@@ -5,4 +5,4 @@ export const setWashPack = (washpack) => {
             payload: washpack
         })
     }
-}
+};

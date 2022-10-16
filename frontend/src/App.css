@@ -258,6 +258,14 @@ body {
   box-shadow: 0 4px 8px 0 rgba(15, 213, 227, 0.5);
 }
 
+.text-yellow{
+  color: #cddc39;
+}
+
+.text-yellow:hover{
+  color: #cddc39;
+}
+
 #profile-box {
   top: 10vw;
   border: none;
@@ -296,4 +304,24 @@ body {
   margin-right: 10px;
   margin-left: 10px;
   margin-block: 10px;
+}
+
+#packBox {
+  box-shadow: 10px 10px 10px black;
+  background-color: rgba(0, 0, 0, .8);
+}
+
+#packBox:hover {
+  border-color: rgb(11, 214, 109);
+  background-color: rgb(119, 175, 155);
+}
+
+#packTitle {
+  box-shadow: 10px 10px 10px rgb(29, 222, 190);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.slot-item{
+  width: 30%;
+  aspect-ratio: 1/1;
 }

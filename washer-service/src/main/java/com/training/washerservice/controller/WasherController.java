@@ -44,7 +44,7 @@ public class WasherController {
 //			washservice.addWasher(washer);
 			return new ResponseEntity<String> ("New WashPack saved successfully", HttpStatus.CREATED);
 		}
-		return new ResponseEntity<String> ("WashPack cannot be added", HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String> ("WashPack cannot be added", HttpStatus.OK);
 	}
 	
 	@GetMapping("/WashPack/list")
@@ -58,9 +58,9 @@ public class WasherController {
 		boolean updated = washservice.updateWashPack(washer);
 		if(updated) {
 //			washservice.updateWashPack(washer);
-			return new ResponseEntity<String> ("New WashPack updated successfully", HttpStatus.OK);
+			return new ResponseEntity<String> ("WashPack updated successfully", HttpStatus.OK);
 		}
-		return new ResponseEntity<String> ("WashPack cannot be updated", HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String> ("WashPack cannot be updated", HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/WashPack/delete")  
@@ -70,7 +70,7 @@ public class WasherController {
 //			washservice.deleteWashPack(stringList);
 			return new ResponseEntity<String> ("WashPack deleted successfully", HttpStatus.OK);
 		}
-		return new ResponseEntity<String> ("WashPack cannot be deleted", HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String> ("WashPack cannot be deleted", HttpStatus.OK);
 	}
 	
 	@GetMapping("/WashPack/filter")
@@ -95,7 +95,7 @@ public class WasherController {
 //			addonservice.insertAddOn(addon);
 			return new ResponseEntity<String> ("New AddOn saved successfully", HttpStatus.CREATED);
 		}
-		return new ResponseEntity<String> ("AddOn cannot be added", HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String> ("AddOn cannot be added", HttpStatus.OK);
 	}
 	
 	@GetMapping("/AddOn/list")
@@ -109,9 +109,9 @@ public class WasherController {
 		boolean updated = addonservice.updateAddOn(addon);
 		if(updated) {
 //			addonservice.updateAddOn(addon);
-			return new ResponseEntity<String> ("New AddOn updated successfully", HttpStatus.OK);
+			return new ResponseEntity<String> ("AddOn updated successfully", HttpStatus.OK);
 		}
-		return new ResponseEntity<String> ("AddOn cannot be updated", HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String> ("AddOn cannot be updated", HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/AddOn/delete")
@@ -121,7 +121,7 @@ public class WasherController {
 //			addonservice.deleteAddOn(stringList);
 			return new ResponseEntity<String> ("AddOn deleted successfully", HttpStatus.OK);
 		}
-		return new ResponseEntity<String> ("AddOn cannot be deleted", HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String> ("AddOn cannot be deleted", HttpStatus.OK);
 	}
 	
 	@GetMapping("/AddOn/filter")

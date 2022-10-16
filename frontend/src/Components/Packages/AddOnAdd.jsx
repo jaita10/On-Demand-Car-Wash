@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import WashPackService from "../../Service/WashPackService";
+import AddOnsService from "../../Service/AddOnsService";
 import RegisterFormIndicator from "../Register/RegisterFormIndicator";
 
-const WashPackAdd = (props) => {
+const AddOnAdd = (props) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -35,14 +35,14 @@ const WashPackAdd = (props) => {
       newMessage = "Price is mandatory";
     } else {
       setIndicator("blank");
-      console.log("WashPack added success");
+      console.log("AddOn added success");
       newMessage = "Addition is successful";
       return true;
     }
     setMessage(newMessage);
-    console.log("WashPack not added......");
+    console.log("AddOn not added......");
     setIndicator("message");
-    console.log("WashPack not got added");
+    console.log("AddOn not got added");
     return false;
   };
 
@@ -51,14 +51,14 @@ const WashPackAdd = (props) => {
     setIndicator("spinner");
     if (inputIsValid()) {
       console.log("addingg......");
-      const data = await WashPackService.addWashPack({
-        washpackTitle: title,
-        washpackDescription: description,
-        washpackPrice: price,
+      const data = await AddOnsService.addAddOn({
+        addonTitle: title,
+        addonDescription: description,
+        addonPrice: price,
       });
-      if (data === "New WashPack saved successfully") {
+      if (data === "New AddOn saved successfully") {
         console.log("added");
-        navigate("/user/washpacks");
+        navigate("/user/addons");
       }
     }
   };
@@ -74,7 +74,7 @@ const WashPackAdd = (props) => {
             value={title}
             type="text"
             className="login-input d-block m-auto"
-            placeholder="WashPack Title"
+            placeholder="AddOn Title"
             required={true}
           />
         </div>
@@ -85,7 +85,7 @@ const WashPackAdd = (props) => {
             value={description}
             type="text"
             className="login-input d-block m-auto"
-            placeholder="WashPack Description"
+            placeholder="AddOn Description"
           />
         </div>
       </div>
@@ -97,7 +97,7 @@ const WashPackAdd = (props) => {
             value={price}
             type="text"
             className="login-input d-block m-auto"
-            placeholder="WashPack Price"
+            placeholder="AddOn Price"
           />
         </div>
       </div>
@@ -118,4 +118,4 @@ const WashPackAdd = (props) => {
   );
 };
 
-export default WashPackAdd;
+export default AddOnAdd;

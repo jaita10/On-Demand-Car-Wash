@@ -18,6 +18,44 @@ const AddOnsService = {
       console.log(data);
       return data;
   },
+
+  addAddOn: async (addonpack) => {
+    const data = await axios
+      .post("http://localhost:8100/washers/AddOn/add", addonpack)
+      .then((response) => response.data)
+      .catch((error) => console.log(error));
+    console.log(data);
+    return data;
+  },
+
+  updateAddOn: async (addonpack) => {
+    const data = await axios
+      .put("http://localhost:8100/washers/AddOn/update", addonpack)
+      .then((response) => response.data)
+      .catch((error) => console.log(error));
+    console.log(data);
+    return data;
+  },
+
+  deleteAddOn: async (addonId) => {
+    console.log(addonId);
+
+    const config = {
+      data: {
+        stringList: [addonId],
+      },
+    };
+
+    console.log(config);
+
+    const data = await axios
+      .delete("http://localhost:8100/washers/AddOn/delete", config)
+      .then((response) => response.data)
+      .catch((error) => console.log(error));
+    console.log(data);
+    return data;
+  },
+
 };
 
 export default AddOnsService;

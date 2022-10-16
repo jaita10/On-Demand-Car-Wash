@@ -74,7 +74,7 @@ public class UserController {
 		if(updated == "User updated successfully") {
 			return new ResponseEntity<String>(updated, HttpStatus.OK);
 		}
-		return new ResponseEntity<String>(updated, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String>(updated, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/delete")
@@ -83,7 +83,7 @@ public class UserController {
 		if(deleted) {
 			return new ResponseEntity<String>("Users deleted successfully", HttpStatus.OK);
 		}
-		return new ResponseEntity<String>("User with one of these Ids does not exist", HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String>("User with one of these Ids does not exist", HttpStatus.OK);
 	}
 	
 	
@@ -99,7 +99,7 @@ public class UserController {
 		if(saved.equals("Car saved successfully")) {
 			return new ResponseEntity<String>(saved,HttpStatus.CREATED);
 		}
-		return new ResponseEntity<String>(saved,HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String>(saved,HttpStatus.OK);
 	}
 	
 	@GetMapping("/car/list")
@@ -113,16 +113,16 @@ public class UserController {
 		if(updated == "Car updated successfully") {
 			return new ResponseEntity<String>(updated, HttpStatus.OK);
 		}
-		return new ResponseEntity<String>(updated, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String>(updated, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/car/delete")
 	public ResponseEntity<String> deleteCars(@RequestBody StringList stringList){
 		String deleted = carService.deleteCars(stringList);
-		if(deleted.equals("Cars deleted successfully")) {
+		if(deleted.equals("Car deleted successfully")) {
 			return new ResponseEntity<String>(deleted, HttpStatus.OK);
 		}
-		return new ResponseEntity<String>("Car with one of these Ids does not exist", HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String>("Car with one of these Ids does not exist", HttpStatus.OK);
 	}
 	
 	

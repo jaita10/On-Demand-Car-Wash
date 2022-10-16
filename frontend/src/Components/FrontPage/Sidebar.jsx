@@ -37,7 +37,7 @@ const Sidebar = (props) => {
                         <Link className="nav-link btn sidebutton mb-5 ms-5 " type="button" to={"/Help"} data-bs-dismiss="offcanvas" onClick={()=>goTo("/Help")}>Help</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link btn sidebutton mb-5 ms-5 " type="button" to={"/profile"} data-bs-dismiss="offcanvas" onClick={()=>goTo("/profile")}>Profile</Link>
+                        <Link className="nav-link btn sidebutton mb-5 ms-5 " type="button" to={"/user/profile"} data-bs-dismiss="offcanvas" onClick={()=>goTo("/user/profile")}>Profile</Link>
                     </li>
                     {/* <li className="nav-item dropdown">
                         <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

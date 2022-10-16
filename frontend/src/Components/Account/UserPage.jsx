@@ -8,140 +8,136 @@ import PrivacyPolicy from "../Static Pages/PrivacyPolicy";
 import ProfilePage from "./ProfilePage";
 
 const UserPage = (props) => {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  const [user, setUser] = useState({});
 
-    const [user, setUser] = useState({});
+  const loadUser = async () => {
+    const data = await UserService.getUser();
+    setUser(data);
+    dispatch(changeUser(data));
+  };
 
-    const loadUser = async () => {
-        const data = await UserService.getUser();
-        setUser(data)
-        dispatch(changeUser(data))
-    }
+  useEffect(() => {
+    loadUser();
+  }, []);
 
-    useEffect(() => {
-        loadUser();
-    }, [])
+  return (
+    <>
+      <NewNavbar />
 
-
-    return (
-        <>
-            <NewNavbar />
-
-            <div className="container-fluid text-light py-5" style={{ height: "100vh" }}>
-                <div
-                    className="container" id="profile-box"
-                    style={{ height: "100vh", width: "70%" }}
+      <div
+        className="container-fluid text-light py-5"
+        style={{ height: "100vh" }}
+      >
+        <div
+          className="container"
+          id="profile-box"
+          style={{ height: "100vh", width: "70%" }}
+        >
+          <div className="row fw-bold py-3 border-bottom">
+            Account
+            <div className="row fw-lighter" style={{ fontSize: "12px" }}>
+              Jaita Kapuria
+            </div>
+          </div>
+          <div className="row text-yellow" style={{ height: "100vh" }}>
+            <div className="col-2 pe-5">
+              <Link
+                className="row fw-light border-bottom py-4 text-yellow"
+                to={"/user/profile"}
+              >
+                Overview
+              </Link>
+              <div className="row fw-light border-bottom py-4">
+                <div className="row py-2" style={{ fontSize: "16px" }}>
+                  ORDERS
+                </div>
+                <Link
+                  className="row text-yellow"
+                  style={{ fontSize: "14px" }}
+                  to={"/user/orderlist"}
                 >
-                    <div className="row fw-bold py-3 border-bottom">
-                        Account
-                        <div
-                            className="row fw-lighter"
-                            style={{ fontSize: "12px" }}
-                        >
-                            Jaita Kapuria
-                        </div>
-                    </div>
-                    <div className="row" style={{ height: "100vh" }}>
-                        <div className="col-2 pe-5">
-                            <Link className="row fw-light border-bottom py-4" to={"/user/profile"}>
-                                Overview
-                            </Link>
-                            <div className="row fw-light border-bottom py-4">
-                                <div
-                                    className="row py-2"
-                                    style={{ fontSize: "12px" }}
-                                >
-                                    ORDERS
-                                </div>
-                                <Link
-                                    className="row"
-                                    style={{ fontSize: "12px" }}
-                                    to={"/user/orders"}
-                                >
-                                    Orders & Returns
-                                </Link>
-                            </div>
-                            <div className="row fw-light border-bottom py-4">
-                                <div
-                                    className="row py-2"
-                                    style={{ fontSize: "12px" }}
-                                >
-                                    ACCOUNT
-                                </div>
-                                <Link
-                                    className="row"
-                                    style={{ fontSize: "12px" }}
-                                    to={"/user/profile"}
-                                >
-                                    Profile
-                                </Link>
-                            </div>
-                            <div className="row fw-light border-bottom py-4">
-                                <div
-                                    className="row py-2"
-                                    style={{ fontSize: "12px" }}
-                                >
-                                    PACKAGES
-                                </div>
-                                <Link
-                                    className="row"
-                                    style={{ fontSize: "12px" }}
-                                    to={"/user/washpacks"}
-                                >
-                                    WashPacks
-                                </Link>
-                                <Link
-                                    className="row"
-                                    style={{ fontSize: "12px" }}
-                                    to={"/user/addons"}
-                                >
-                                    Add-Ons
-                                </Link>
-                                <Link
-                                    className="row"
-                                    style={{ fontSize: "12px" }}
-                                    to={"/user/cars"}
-                                >
-                                    Cars
-                                </Link>
-                            </div>
-                            <div className="row fw-light border-bottom py-4">
-                                <div
-                                    className="row py-2"
-                                    style={{ fontSize: "12px" }}
-                                >
-                                    LEGAL
-                                </div>
-                                <Link
-                                    className="row"
-                                    style={{ fontSize: "12px" }}
-                                    to={"/user/termsofuse"}
-                                >
-                                    Terms Of Use
-                                </Link>
-                                <Link
-                                    className="row"
-                                    style={{ fontSize: "12px" }}
-                                    to={"/user/privacypolicy"}
-                                >
-                                    Privacy Policy
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="col p-3 border-start">
-                            <div
-                                className="container border p-0 position-relative scroll"
-                                style={{ height: "90vh" }}
-                            >
+                  Orders & Returns
+                </Link>
+                <Link
+                  className="row text-yellow"
+                  style={{ fontSize: "14px" }}
+                  to={"/user/book"}
+                >
+                  Book Now
+                </Link>
+              </div>
+              <div className="row fw-light border-bottom py-4">
+                <div className="row py-2 fs-bold" style={{ fontSize: "16px" }}>
+                  ACCOUNT
+                </div>
+                <Link
+                  className="row text-yellow"
+                  style={{ fontSize: "14px" }}
+                  to={"/user/profile"}
+                >
+                  Profile
+                </Link>
+              </div>
+              <div className="row fw-light border-bottom py-4">
+                <div className="row py-2" style={{ fontSize: "16px" }}>
+                  PACKAGES
+                </div>
+                <Link
+                  className="row text-yellow"
+                  style={{ fontSize: "14px" }}
+                  to={"/user/washpacks"}
+                >
+                  WashPacks
+                </Link>
+                <Link
+                  className="row text-yellow"
+                  style={{ fontSize: "14px" }}
+                  to={"/user/addons"}
+                >
+                  Add-Ons
+                </Link>
+                <Link
+                  className="row text-yellow"
+                  style={{ fontSize: "14px" }}
+                  to={"/user/cars"}
+                >
+                  Cars
+                </Link>
+              </div>
+              <div className="row fw-light border-bottom py-4">
+                <div className="row py-2" style={{ fontSize: "16px" }}>
+                  LEGAL
+                </div>
+                <Link
+                  className="row text-yellow"
+                  style={{ fontSize: "14px" }}
+                  to={"/user/termsofuse"}
+                >
+                  Terms Of Use
+                </Link>
+                <Link
+                  className="row text-yellow"
+                  style={{ fontSize: "14px" }}
+                  to={"/user/privacypolicy"}
+                >
+                  Privacy Policy
+                </Link>
+              </div>
+            </div>
+            <div className="col p-3 border-start">
+              <div
+                className="container border p-0 position-relative scroll"
+                style={{ height: "90vh" }}
+              >
+                <Outlet />
 
-                                <Outlet />
+                {/* <ProfilePage user={user}/> */}
 
-                                {/* <ProfilePage user={user}/> */}
+                {/* <PrivacyPolicy /> */}
 
-                                {/* <PrivacyPolicy /> */}
-
-                                {/* <div
+                {/* <div
                                     className="row w-50 m-auto"
                                     style={{ height: "90vh" }}
                                 >
@@ -214,13 +210,13 @@ const UserPage = (props) => {
                                         </div>
                                     </div>
                                 </div> */}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-        </>
-    );
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default UserPage;

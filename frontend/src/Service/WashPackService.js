@@ -24,14 +24,43 @@ const WashPackService = {
     return data;
   },
 
-  addWashPack: async (pack) => {
+  addWashPack: async (washpack) => {
     const data = await axios
-        .post("http://localhost:8100/washers/WashPack/add", pack)
-        .then((response) => response.data)
-        .catch((error) => console.log(error))
-        console.log(data);
-        return data;
-},
+      .post("http://localhost:8100/washers/WashPack/add", washpack)
+      .then((response) => response.data)
+      .catch((error) => console.log(error));
+    console.log(data);
+    return data;
+  },
+
+  updateWashPack: async (washpack) => {
+    const data = await axios
+      .put("http://localhost:8100/washers/WashPack/update", washpack)
+      .then((response) => response.data)
+      .catch((error) => console.log(error));
+    console.log(data);
+    return data;
+  },
+
+  deleteWashPack: async (washpackId) => {
+    console.log(washpackId);
+
+    const config = {
+      data: {
+        stringList: [washpackId],
+      },
+    };
+
+    console.log(config);
+
+    const data = await axios
+      .delete("http://localhost:8100/washers/WashPack/delete", config)
+      .then((response) => response.data)
+      .catch((error) => console.log(error));
+    console.log(data);
+    return data;
+  },
+  
 };
 
 export default WashPackService;

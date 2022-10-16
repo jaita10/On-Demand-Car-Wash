@@ -1,8 +1,8 @@
-export const WashReducer = (pack = {}, action) => {
+export const WashReducer = (washpack = {}, action) => {
     switch (action.type) {
         case 'SET_WASHPACK':
             return action.payload;
         default:
-            return pack;
+            return washpack;
     }
 }
