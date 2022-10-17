@@ -325,3 +325,12 @@ body {
   width: 30%;
   aspect-ratio: 1/1;
 }
+
+.pack-add {
+  border: 2px solid white;
+  width: 45%;
+  aspect-ratio: 3/4;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-block: 10px;
+}

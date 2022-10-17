@@ -63,7 +63,7 @@ const WashPacks = (props) => {
                   backgroundImage: `url(/washimages/WashPack_${++serial}.jpg)`,
                 }}
               ></div>
-              <h2 className="p-2">{element.washpackTitle}</h2>
+              <h2 className="p-2 fw-bold">{element.washpackTitle}</h2>
               <div className="py-0 px-2 text-wrap">
                 {element.washpackDescription}
               </div>
@@ -110,7 +110,7 @@ const WashPacks = (props) => {
       </div>
 
       <Link
-        className="pack-item d-flex justify-content-center align-items-center text-yellow"
+        className="pack-add d-flex justify-content-center align-items-center text-yellow ms-4 mb-4"
         to={"/user/addWashpack"}
       >
         <svg

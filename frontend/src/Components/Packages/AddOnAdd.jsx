@@ -67,47 +67,53 @@ const AddOnAdd = (props) => {
     <div className="container">
       <RegisterFormIndicator indicator={indicator} message={message} />
 
-      <div className="row mb-3">
-        <div className="col">
+      <div>
+        <div className="card-body text-center w-50 align-middle ms-5">
+          <div className="rounded" id="packTitle">
+            <h3 className="card-title mb-5 fs-1 py-2">ADD ADDON</h3>
+          </div>
+        </div>
+      </div>
+
+      <div className="row mb-3 m-3">
+        <div className="row mt-5 mb-3">
           <input
             onChange={handleTitle}
             value={title}
             type="text"
-            className="login-input d-block m-auto"
+            className="login-input d-block m-auto p-2 fs-4 text-center w-50 rounded"
             placeholder="AddOn Title"
             required={true}
           />
         </div>
 
-        <div className="col">
+        <div className="row mt-4 mb-3">
           <input
             onChange={handleDescription}
             value={description}
             type="text"
-            className="login-input d-block m-auto"
+            className="login-input d-block m-auto p-2 fs-4 text-center w-50 rounded"
             placeholder="AddOn Description"
           />
         </div>
-      </div>
 
-      <div className="row mb-3">
-        <div className="col">
+        <div className="row mt-4 mb-3">
           <input
             onChange={handlePrice}
             value={price}
             type="text"
-            className="login-input d-block m-auto"
+            className="login-input d-block m-auto p-2 fs-4 text-center w-50 rounded"
             placeholder="AddOn Price"
           />
         </div>
       </div>
 
-      <div className="row mb-3">
+      <div className="row mt-5">
         <div className="col">
           <button
             onClick={handleAdd}
             type="submit"
-            className="btn btn-outline d-block m-auto fs-3 px-3 py-1 rounded text-white"
+            className="btn btn-outline d-block m-auto fs-2 px-3 py-2 rounded text-white "
             id="packBox"
           >
             ADD

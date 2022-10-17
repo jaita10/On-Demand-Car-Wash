@@ -62,7 +62,7 @@ const Cars = (props) => {
                   backgroundImage: `url(/carimages/Car_${++serial}.jpg)`,
                 }}
               ></div>
-              <h2 className="p-2">{element.carType}</h2>
+              <h2 className="p-2 fw-bold">{element.carType}</h2>
               {/* <label for="exampleColorInput" className="form-label">
                 Color picker
               </label> */}
@@ -116,7 +116,7 @@ const Cars = (props) => {
         })}
       </div>
       <Link
-        className="pack-item d-flex justify-content-center align-items-center text-yellow"
+        className="pack-add d-flex justify-content-center align-items-center text-yellow ms-4 mb-4"
         to={"/user/addCar"}
       >
         <svg

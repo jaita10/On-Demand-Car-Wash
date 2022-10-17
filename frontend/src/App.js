@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import FallBackPage from "./Components/FallBackPage";
+import FallBackPage from "./Components/Static Pages/FallBackPage";
 import FrontHomePage from "./Components/FrontPage/FrontHomePage";
 import LoginPage from "./Components/Login/LoginPage";
 import ProfilePage from "./Components/Account/ProfilePage";
