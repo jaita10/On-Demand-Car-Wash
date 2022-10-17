@@ -19,6 +19,7 @@ import OrderPage from "./Components/Order/OrderPage";
 import AddOnUpdate from "./Components/Packages/AddOnUpdate";
 import CarUpdate from "./Components/Packages/CarUpdate";
 import OrderList from "./Components/Order/OrderList";
+import EditProfile from "./Components/Account/EditProfile";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
 
         <Route exact path="/user" element={<UserPage />}>
           <Route exact path="profile" element={<ProfilePage />} />
+          <Route exact path="editProfile" element={<EditProfile />} />
 
           <Route exact path="orderlist" element={<OrderList />} />
 

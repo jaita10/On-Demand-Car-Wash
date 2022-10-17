@@ -5,9 +5,19 @@ import CarOrder from "./CarOder";
 import WashPackOrder from "./WashPackOrder";
 
 const OrderPage = (props) => {
-  // const car = useSelector((state) => state.carpack);
+  const {washpack, addonpack} = useSelector(state=> state)
 
-  const total = useSelector((state) => state.total);
+  // const total = useSelector((state) => state.total);
+
+  const calculateTotal = ()=>{
+    let total = 0;
+    total += washpack.washpackPrice || 0;
+    addonpack?.forEach((element)=>{
+      total+= element.addonPrice || 0;
+    })
+    console.log(total)
+    return total;
+  }
 
   return (
     <>
@@ -19,7 +29,7 @@ const OrderPage = (props) => {
         <AddOnOrder />
 
         <div className="container-fluid fw-bold fs-2 text-center">
-          Total: Rs. {total.washpackPrice + total.addonTotal}
+          Total: Rs. {calculateTotal()}
         </div>
       </div>
     </>

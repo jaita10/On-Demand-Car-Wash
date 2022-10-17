@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const ProfilePage = (props) => {
 
@@ -20,7 +21,7 @@ const ProfilePage = (props) => {
                     >
                         <div className="row ps-4">
                             <div className="col-4">
-                                Full Name
+                                Name
                             </div>
                             <div className="col-8">
                                 {`${user?.firstName} ${user?.lastName}`}
@@ -73,9 +74,9 @@ const ProfilePage = (props) => {
                         </div>
                     </div>
                     <div className="row">
-                        <button className="btn btn-danger">
+                        <Link to={"/user/editProfile"} className="btn btn-danger">
                             Edit
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
