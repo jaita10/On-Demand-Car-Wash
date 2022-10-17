@@ -374,8 +374,6 @@ const TermsOfUse = (props) => {
             <div className="container-fluid">
                 {terms}
             </div>
-
-            {/* <textarea className="mt-3 start-0 bg-black text-warning border-0 position-absolute end-0 terms" value={terms} cols="105" rows="26" ></textarea> */}
         </>
     );
 }
