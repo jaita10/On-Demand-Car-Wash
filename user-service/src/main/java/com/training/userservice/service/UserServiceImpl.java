@@ -39,11 +39,14 @@ public class UserServiceImpl implements UserService {
 			user.validateEmail();
 			user.validatePhoneNumber();
 			logger.info(userRepo.findByUsername(user.getEmail()).toString());
-			if (userRepo.findByUsername(user.getEmail()).toString() != "[]"){
-				throw new Exception("User with this email already exists");
-			}
 		} catch (Exception e) {
 			throw e;
+		}
+	}
+
+	public void validateEmail(User user) throws Exception {
+		if (userRepo.findByUsername(user.getEmail()).toString() != "[]") {
+			throw new Exception("User with this email already exists");
 		}
 	}
 
@@ -55,6 +58,7 @@ public class UserServiceImpl implements UserService {
 		}
 		try {
 			validateUser(user);
+			validateEmail(user);
 			userRepo.save(user);
 			return "User saved successfully";
 		} catch (Exception e) {

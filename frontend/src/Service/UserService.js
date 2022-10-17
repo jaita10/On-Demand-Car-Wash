@@ -47,7 +47,7 @@ const UserService = {
 
   updateUser: async (user) => {
     const data = await axios
-      .put("http://localhost:8100/washers/users/update", user)
+      .put("http://localhost:8100/users/update", user)
       .then((response) => response.data)
       .catch((error) => console.log(error));
     console.log(data);
@@ -66,7 +66,7 @@ const UserService = {
     console.log(config);
 
     const data = await axios
-      .delete("http://localhost:8100/washers/users/delete", config)
+      .delete("http://localhost:8100/users/delete", config)
       .then((response) => response.data)
       .catch((error) => console.log(error));
     console.log(data);

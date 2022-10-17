@@ -5,6 +5,7 @@ import thunk from "redux-thunk";
 import { AddOnReducer } from "../Reducers/AddOnReducer";
 import { CarReducer } from "../Reducers/CarReducer";
 import { OrderReducer } from "../Reducers/OrderReducer";
+import { RefreshReducer } from "../Reducers/RefreshReducer";
 import { TotalReducer } from "../Reducers/TotalReducer";
 import { UserReducer } from "../Reducers/UserReducer";
 import { WashReducer } from "../Reducers/WashPackReducer";
@@ -17,6 +18,7 @@ export default configureStore({
     carpack: CarReducer,
     total: TotalReducer,
     orderpack: OrderReducer,
+    refresh: RefreshReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(thunk).concat(logger),

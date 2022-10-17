@@ -20,8 +20,10 @@ import AddOnUpdate from "./Components/Packages/AddOnUpdate";
 import CarUpdate from "./Components/Packages/CarUpdate";
 import OrderList from "./Components/Order/OrderList";
 import EditProfile from "./Components/Account/EditProfile";
+import CheckoutPage from "./Components/Order/CheckoutPage";
 
 function App() {
+
   return (
     <div>
       <Routes>
@@ -39,6 +41,7 @@ function App() {
           <Route exact path="selectcar" element={<Cars select={false} />} />
           <Route exact path="selectwashpack" element={<WashPacks select={false} />}/>
           <Route exact path="selectaddon" element={<AddOns select={false} />} />
+          <Route exact path="checkout" element={<CheckoutPage />} />
 
           <Route exact path="washpacks" element={<WashPacks select={true} />} />
           <Route exact path="addwashpack" element={<WashPackAdd />} />
