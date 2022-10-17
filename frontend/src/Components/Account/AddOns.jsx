@@ -47,7 +47,7 @@ const AddOns = (props) => {
 
   const handleSelect = (addonpack) => {
     dispatch(addToCart(addonpack));
-    dispatch(addToAddOnTotal(addonpack.addonPrice));
+    // dispatch(addToAddOnTotal(addonpack.addonPrice));
     navigate("/user/book");
   };
 

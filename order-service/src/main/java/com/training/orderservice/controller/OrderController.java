@@ -39,30 +39,30 @@ public class OrderController {
 		if(saved.equals("Order saved successfully")) {
 			return new ResponseEntity<String>(saved,HttpStatus.CREATED);
 		}
-		return new ResponseEntity<String>(saved,HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String>(saved,HttpStatus.OK);
 	}
 	
 	@GetMapping("/list")
-	public OrderList getAllWashPacks() {
+	public OrderList getOrdersList() {
 		return orderService.getAllOrders();
 	}
 	
 	@PutMapping("/update")
-	public ResponseEntity<String> updateWashPack(@RequestBody Order order){
+	public ResponseEntity<String> updateOrder(@RequestBody Order order){
 		String updated = orderService.updateOrder(order);
 		if(updated == "Order updated successfully") {
 			return new ResponseEntity<String>(updated, HttpStatus.OK);
 		}
-		return new ResponseEntity<String>(updated, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String>(updated, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/delete")
-	public ResponseEntity<String> deleteWashPacks(@RequestBody StringList stringList){
+	public ResponseEntity<String> deleteOrder(@RequestBody StringList stringList){
 		boolean deleted = orderService.deleteOrders(stringList);
 		if(deleted) {
 			return new ResponseEntity<String>("Orders deleted successfully", HttpStatus.OK);
 		}
-		return new ResponseEntity<String>("Order with one of these Ids does not exist", HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String>("Order with one of these Ids does not exist", HttpStatus.OK);
 	}
 	
 
