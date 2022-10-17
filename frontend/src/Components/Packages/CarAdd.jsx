@@ -68,7 +68,7 @@ const CarAdd = (props) => {
       <RegisterFormIndicator indicator={indicator} message={message} />
 
       <div>
-        <div className="card-body text-center w-50 align-middle ms-5">
+        <div className="card-body text-center w-50 mx-auto">
           <div className="rounded" id="packTitle">
             <h3 className="card-title mb-5 fs-1 py-2">ADD CAR</h3>
           </div>
@@ -87,17 +87,17 @@ const CarAdd = (props) => {
           />
         </div>
 
-        <div className="row mt-4 mb-3">
+        <div className="row mt-4 mb-3 justify-content-center">
           <label
-            className="col fw-bold fs-4 m-3 text-center"
+            className="col-auto fw-bold fs-4 m-3 text-center"
             htmlFor="carColorInput"
-          >
+          > 
             SELECT YOUR CAR COLOR :{" "}
           </label>
           <input
             onChange={handleColor}
             type="color"
-            className="form-control form-control-color mt-3 d-inline-block"
+            className="col-2 form-control form-control-color mt-3 d-inline-block"
             id="carColorInput"
             value={color}
             title="Choose your color"
@@ -128,7 +128,7 @@ const CarAdd = (props) => {
           <button
             onClick={handleAdd}
             type="submit"
-            className="btn btn-outline d-block m-auto fs-2 px-3 py-2 rounded text-white "
+            className="btn btn-outline d-block m-auto fs-2 px-3 py-2 rounded text-white border border-white"
             id="packBox"
           >
             ADD

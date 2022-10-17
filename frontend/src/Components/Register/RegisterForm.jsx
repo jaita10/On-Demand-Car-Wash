@@ -183,7 +183,7 @@ const RegisterForm = (props) => {
             // onChange={(event) => setFirstName(event.target.value)}
             value={firstName}
             type="text"
-            className="login-input d-block m-auto"
+            className="login-input d-block m-auto rounded"
             placeholder="First Name"
             required={true}
           />
@@ -194,7 +194,7 @@ const RegisterForm = (props) => {
             onChange={handleLastName}
             value={lastName}
             type="text"
-            className="login-input d-block m-auto"
+            className="login-input d-block m-auto rounded"
             placeholder="Last Name"
           />
         </div>
@@ -206,7 +206,7 @@ const RegisterForm = (props) => {
             onChange={handleEmail}
             value={email}
             type="text"
-            className="login-input d-block m-auto"
+            className="login-input d-block m-auto rounded"
             placeholder="Email ID"
           />
         </div>
@@ -216,7 +216,7 @@ const RegisterForm = (props) => {
             onChange={handlePhoneNumber}
             value={phoneNumber}
             type="number"
-            className="login-input d-block m-auto"
+            className="login-input d-block m-auto rounded"
             placeholder="Mobile Number"
           />
         </div>
@@ -249,7 +249,7 @@ const RegisterForm = (props) => {
             onChange={handleDateOfBirth}
             value={dateOfBirth}
             type="date"
-            className="login-input d-block m-auto"
+            className="login-input d-block m-auto rounded"
             placeholder="Date Of Birth"
           />
         </div>
@@ -281,7 +281,7 @@ const RegisterForm = (props) => {
             onChange={handleHintName}
             value={hintName}
             type="text"
-            className="login-input d-block m-auto"
+            className="login-input d-block m-auto rounded"
             placeholder="Hint Name"
           />
         </div>
@@ -293,7 +293,7 @@ const RegisterForm = (props) => {
             onChange={handlePassword}
             value={password}
             type={visible ? "text" : "password"}
-            className="login-input d-block m-auto"
+            className="login-input d-block m-auto rounded"
             placeholder="Password"
           />
         </div>
@@ -309,7 +309,7 @@ const RegisterForm = (props) => {
             onChange={handleConfirmPassword}
             value={confirmPassword}
             type={confirmVisible ? "text" : "password"}
-            className="login-input d-block m-auto"
+            className="login-input d-block m-auto rounded"
             placeholder="Confirm Password"
           />
         </div>
@@ -362,6 +362,14 @@ const RegisterForm = (props) => {
         <div className="col text-center">
           <Link className="hyper-link px-2 py-2 rounded" to={"/login"}>
             Already have an account? Login instead
+          </Link>
+        </div>
+      </div>
+
+      <div className="row mt-4">
+        <div className="col text-center">
+          <Link className="hyper-link px-2 py-2 rounded" to={"/register"}>
+            Register as a washer
           </Link>
         </div>
       </div>
