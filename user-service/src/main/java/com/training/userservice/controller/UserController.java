@@ -125,6 +125,11 @@ public class UserController {
 		return new ResponseEntity<String>("Car with one of these Ids does not exist", HttpStatus.OK);
 	}
 	
+	@PostMapping("/car/TypeById")
+	public ResponseEntity<String> getTypeById(@RequestBody String id) {
+		String type = carService.getTypeById(id);
+		return new ResponseEntity<String>(type, HttpStatus.OK);
+	}
 	
 	
 	

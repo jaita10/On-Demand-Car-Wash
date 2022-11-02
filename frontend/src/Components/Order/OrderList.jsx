@@ -1,42 +1,23 @@
 import { useEffect, useState } from "react";
+import CarService from "../../Service/CarService";
 import OrderService from "../../Service/OrderService";
+import WashPackService from "../../Service/WashPackService";
 
 const OrderList = (props) => {
-  const [orderList, setOrderList] = useState([
-    {
-      orderId: "longOrderId",
-      carId: "SEDAN",
-      washPackId: "Silver Wash",
-      amount: "5000",
-      bookingTime: "2022-09-28T23:39:41.887+00:00",
-      orderStatus: "Pending",
-    },
-    {
-      orderId: "longOrderId",
-      carId: "SEDAN",
-      washPackId: "Platinum Wash",
-      amount: "1800",
-      bookingTime: "2022-09-28T23:39:41.887+00:00",
-      orderStatus: "Pending",
-    },
-    {
-      orderId: "longOrderId",
-      carId: "SEDAN",
-      washPackId: "Gold Wash",
-      amount: "8000",
-      bookingTime: "2022-09-28T23:39:41.887+00:00",
-      orderStatus: "Pending",
-    },
-  ]);
+  const [orderList, setOrderList] = useState([]);
 
   const fetchOrderList = async () => {
-    const data = await OrderService.getOrdersList();
-    console.log(data.orderList);
-    setOrderList(data.orderList);
+    const data = await OrderService.getOrdersList().then((response) => {
+      setOrderList(response.orderList);
+      return response.orderList;
+    });
+    console.log(data);
   };
 
   useEffect(() => {
+    console.log("entering use effect");
     fetchOrderList();
+    console.log("after entering use effect");
   }, []);
 
   let serial = 0;
@@ -67,8 +48,8 @@ const OrderList = (props) => {
               <div className="col-2 p-0">
                 {dateToString(element.bookingTime)}
               </div>
-              <div className="col-3 p-0">{element.washPackId}</div>
-              <div className="col-2 p-0">{element.carId}</div>
+              <div className="col-3 p-0">{element.washpackTitle}</div>
+              <div className="col-2 p-0">{element.carType}</div>
               <div className="col-2 p-0">{element.amount}</div>
               <div className="col-2 p-0">{element.orderStatus}</div>
             </div>

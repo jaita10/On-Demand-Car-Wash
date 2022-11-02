@@ -19,5 +19,6 @@ public interface CarService {
 	
 	public MyUserDetails getUserByUsername(String username) ;
 	
+	public String getTypeById(String id);
 
 }

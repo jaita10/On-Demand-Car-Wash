@@ -96,7 +96,7 @@ const LoginForm = (props) => {
 
             <div className="row mt-3">
                 <div className="col text-center">
-                    <Link className="hyper-link px-2 py-2 rounded" to={"/form/register"}>
+                    <Link className="hyper-link px-2 py-2 rounded" to={"/register"}>
                         New user? Create an account
                     </Link>
                 </div>

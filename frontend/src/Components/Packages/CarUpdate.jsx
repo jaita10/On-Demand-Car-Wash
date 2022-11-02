@@ -70,6 +70,14 @@ const CarUpdate = (props) => {
     return (
       <div className="container">
         <RegisterFormIndicator indicator={indicator} message={message} />
+
+        <div>
+        <div className="card-body text-center w-50 mx-auto">
+          <div className="rounded" id="packTitle">
+            <h3 className="card-title mb-5 fs-1 py-2">UPDATE CAR</h3>
+          </div>
+        </div>
+      </div>
   
         <div className="row mb-3">
           <div className="col">

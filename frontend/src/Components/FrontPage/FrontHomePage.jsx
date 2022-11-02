@@ -1,16 +1,15 @@
 import React from 'react';
 import Advertisement from './Advertisement';
 import Footer from './Footer';
-import NewNavbar from './NewNavbar';
 import Home from './Home';
-import Flip from './Flip';
+import NewNavbar from './NewNavbar';
 
 const FrontHomePage = props => {
     return (
         <div>
             <NewNavbar />
             <Home />
-            <Flip />
+            {/* <Flip /> */}
             {/* <Carousel/> */}
             <Advertisement />
             <Footer />

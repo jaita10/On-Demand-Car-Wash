@@ -30,7 +30,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
 			.authorizeRequests().antMatchers("/washers/WashPack/list","/washers/WashPack/filter","/washers/WashPack/add",
-					"/washers/WashPack/update","/washers/WashPack/delete","/washers/AddOn/add","/washers/AddOn/list",
+					"/washers/WashPack/update","/washers/WashPack/delete","/washers/WashPack/TitleById","/washers/AddOn/add","/washers/AddOn/list",
 					"/washers/AddOn/update","/washers/AddOn/delete","/washers/AddOn/filter").permitAll()
 			.anyRequest().authenticated()
 			.and().sessionManagement()

@@ -33,6 +33,22 @@ const WashPackService = {
     return data;
   },
 
+  getWashpackTitleById: async (id) => {
+    const config = {
+      headers: {
+        "Content-Type": "text/plain",
+      },
+    };
+
+    const data = await axios
+      .post("http://localhost:8100/washers/WashPack/TitleById", id, config)
+      .then((response) => response.data)
+      .catch((error) => console.log(error));
+    console.log(data);
+    console.log({id , config});
+    return data;
+  },
+
   updateWashPack: async (washpack) => {
     const data = await axios
       .put("http://localhost:8100/washers/WashPack/update", washpack)
@@ -60,7 +76,6 @@ const WashPackService = {
     console.log(data);
     return data;
   },
-  
 };
 
 export default WashPackService;

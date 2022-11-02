@@ -22,13 +22,13 @@ const AddOnOrder = (props) => {
   return (
     <>
       <div className="container-fluid d-flex flex-wrap p-0 ">
-        {addonList?.map((element) => {
+        {addonList?.map((element, index) => {
           return (
             <div
               className="slot-item border p-2 text-center fw-bold fs-4 position-relative me-3 mb-3 "
               key={element.addonId}
               style={{
-                backgroundImage: `url(/washimages/AddOn_1.jpg)`,
+                backgroundImage: `url(/washimages/AddOn_${index+1}.jpg)`,
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",

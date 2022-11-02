@@ -12,9 +12,9 @@ const CarOrder = (props) => {
           </div> */}
         <div className="row">
           <div className="col">
-            {car.carType ? car.carType : "No Car Type Selected"} <br />{" "}
-            {car.carColor ? car.carColor : "No Car Color Selected"} <br />{" "}
-            {car.carNumber ? car.carNumber : "No Car Number Selected"}
+            {props.car.carType ||  "No Car Type Selected"} <br />{" "}
+            {props.car.carColor ||  "No Car Color Selected"} <br />{" "}
+            {props.car.carNumber ||  "No Car Number Selected"}
           </div>
           <div className="col-2 d-flex align-items-center">
             <Link

@@ -102,5 +102,8 @@ public class CarServiceImpl implements CarService{
         return userDetails;
     }
 	
+	public String getTypeById(String id) {
+		return carRepo.findByCarId(id).getCarType();
+	}
 
 }

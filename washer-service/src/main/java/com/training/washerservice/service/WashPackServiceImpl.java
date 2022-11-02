@@ -108,4 +108,7 @@ public class WashPackServiceImpl implements WashPackService{
         return userDetails;
     }
 	
+	public String getTitleById(String id) {
+		return washrepo.findByWashPackId(id).getWashpackTitle();
+	}
 }

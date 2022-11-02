@@ -13,7 +13,7 @@ const Welcome = (props) => {
                     The best care that your car can get is right here with our
                     verified washers
                 </p>
-                <Link to={"/form"} type="button" className="btn me-5 buttonc">
+                <Link to={"/user/book"} type="button" className="btn me-5 buttonc">
                     Book Now
                 </Link>
                 <Link to={"/form"} type="button" className="btn buttonc">

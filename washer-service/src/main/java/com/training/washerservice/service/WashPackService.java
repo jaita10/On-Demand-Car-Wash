@@ -19,5 +19,7 @@ public interface WashPackService {
 	public WashPackList getFilteredWashPacks(Filter filterPack);
 	
 	public MyUserDetails getUserByUsername(String username) ;
+	
+	public String getTitleById(String id);
 
 }

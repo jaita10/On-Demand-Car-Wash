@@ -68,9 +68,9 @@ const WashPackAdd = (props) => {
       <RegisterFormIndicator indicator={indicator} message={message} />
 
       <div>
-        <div className="card-body text-center w-50 align-middle ms-5">
+        <div className="card-body text-center w-50 mx-auto">
           <div className="rounded" id="packTitle">
-            <h3 className="card-title mb-4 fs-1 py-2">ADD WASHPACK</h3>
+            <h3 className="card-title mb-5 fs-1 py-2">ADD WASHPACK</h3>
           </div>
         </div>
       </div>

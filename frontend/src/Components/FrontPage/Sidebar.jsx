@@ -28,10 +28,10 @@ const Sidebar = (props) => {
                         <Link className="nav-link btn sidebutton mb-5 ms-5 " type="button" to={"/About"} data-bs-dismiss="offcanvas" onClick={()=>goTo("/About")}>About Us</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link btn sidebutton mb-5 ms-5 " type="button" to={"/Book"} data-bs-dismiss="offcanvas" onClick={()=>goTo("/Book")}>Book Now</Link>
+                        {/* <Link className="nav-link btn sidebutton mb-5 ms-5 " type="button" to={"/Book"} data-bs-dismiss="offcanvas" onClick={()=>goTo("/Book")}>Book Now</Link> */}
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link btn sidebutton mb-5 ms-5 " type="button" to={"/Schedule"} data-bs-dismiss="offcanvas" onClick={()=>goTo("/Schedule")}>Schedule Later</Link>
+                        {/* <Link className="nav-link btn sidebutton mb-5 ms-5 " type="button" to={"/Schedule"} data-bs-dismiss="offcanvas" onClick={()=>goTo("/Schedule")}>Schedule Later</Link> */}
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link btn sidebutton mb-5 ms-5 " type="button" to={"/Help"} data-bs-dismiss="offcanvas" onClick={()=>goTo("/Help")}>Help</Link>

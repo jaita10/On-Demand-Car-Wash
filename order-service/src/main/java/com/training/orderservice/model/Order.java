@@ -12,64 +12,71 @@ import org.springframework.data.mongodb.core.mapping.FieldType;
 import com.training.orderservice.exceptions.RatingOutOfRangeException;
 import com.training.orderservice.wrapper.StringList;
 
-@Document(collection="ORDER")
+@Document(collection = "ORDER")
 public class Order {
-	
+
 	@Id
 	private String orderId;
 	private String carId;
 	private String washPackId;
 	private double amount;
 	private StringList addOnIdList;
-	
+
+	private String carType;
+	private String washpackTitle;
+
 	@Field(targetType = FieldType.DATE_TIME)
 	private LocalDateTime bookingTime;
 	@Field(targetType = FieldType.DATE_TIME)
 	private LocalDateTime completionTime;
-	
+
 	private String orderStatus;
-	
+
 	private Location location;
-	
+
 	private String washerId;
-	
-	private Feedback customerFeedback;	
+
+	private Feedback customerFeedback;
 	private Feedback washerFeedback;
-	
+
 	private int bucketsOfWaterUsed;
-	
-	private static List<String> validOrderStatus =  Arrays.asList( "PENDING" , "IN_PROCESS" , "COMPLETED" , "CANCELLED" , "TERMINATED" );
-	//cancelled by customer, terminated by admin
-	
+
+	private static List<String> validOrderStatus = Arrays.asList("PENDING", "IN_PROCESS", "COMPLETED", "CANCELLED",
+			"TERMINATED");
+	// cancelled by customer, terminated by admin
+
 	// Custom Constructor
-		public Order(String carId, String washPackId,StringList addOnIdList, double amount, Location location , LocalDateTime completionTime) {
-			
-			this.carId = carId;
-			this.washPackId = washPackId;
-			this.addOnIdList = addOnIdList;
-			this.amount = amount;
-			this.location = location;
-			
-			this.bookingTime = LocalDateTime.now();
-			this.orderStatus = "PENDING";
-			this.washerId = null;
-			this.completionTime = null;
-			this.customerFeedback = null;
-			this.washerFeedback = null;
-			this.bucketsOfWaterUsed = 0;
-		}
-	
+	public Order(String carId, String washPackId, StringList addOnIdList, double amount, Location location,
+			LocalDateTime completionTime) {
+
+		this.carId = carId;
+		this.washPackId = washPackId;
+		this.addOnIdList = addOnIdList;
+		this.amount = amount;
+		this.location = location;
+
+		this.bookingTime = LocalDateTime.now();
+		this.orderStatus = "PENDING";
+		this.washerId = null;
+		this.completionTime = null;
+		this.customerFeedback = null;
+		this.washerFeedback = null;
+		this.bucketsOfWaterUsed = 0;
+	}
+
 	public Order() {}
 
-	public Order(String orderId, String carId, String washPackId, double amount, StringList addOnIdList,
-			LocalDateTime bookingTime, LocalDateTime completionTime, String orderStatus, Location location,
-			String washerId, Feedback customerFeedback, Feedback washerFeedback, int bucketsOfWaterUsed) {
-		super();
+	public Order(String orderId, String carId, String washPackId, double amount, StringList addOnIdList, String carType,
+			String washpackTitle, LocalDateTime bookingTime, LocalDateTime completionTime, String orderStatus,
+			Location location, String washerId, Feedback customerFeedback, Feedback washerFeedback,
+			int bucketsOfWaterUsed) {
 		this.orderId = orderId;
 		this.carId = carId;
 		this.washPackId = washPackId;
 		this.amount = amount;
 		this.addOnIdList = addOnIdList;
+		this.carType = carType;
+		this.washpackTitle = washpackTitle;
 		this.bookingTime = bookingTime;
 		this.completionTime = completionTime;
 		this.orderStatus = orderStatus;
@@ -118,6 +125,22 @@ public class Order {
 
 	public void setAddOnIdList(StringList addOnIdList) {
 		this.addOnIdList = addOnIdList;
+	}
+
+	public String getCarType() {
+		return carType;
+	}
+
+	public void setCarType(String carType) {
+		this.carType = carType;
+	}
+
+	public String getWashpackTitle() {
+		return washpackTitle;
+	}
+
+	public void setWashpackTitle(String washpackTitle) {
+		this.washpackTitle = washpackTitle;
 	}
 
 	public LocalDateTime getBookingTime() {
@@ -184,19 +207,17 @@ public class Order {
 		this.bucketsOfWaterUsed = bucketsOfWaterUsed;
 	}
 
-	public boolean validateOrderStatus(){
+	public boolean validateOrderStatus() {
 		return validOrderStatus.contains(this.orderStatus);
 	}
-	
-	public void validateFeedbacks() throws RatingOutOfRangeException{
-		if(this.customerFeedback != null && !this.customerFeedback.validateRating()) {
-			throw new RatingOutOfRangeException("customer");			
+
+	public void validateFeedbacks() throws RatingOutOfRangeException {
+		if (this.customerFeedback != null && !this.customerFeedback.validateRating()) {
+			throw new RatingOutOfRangeException("customer");
 		}
-		if(this.washerFeedback != null && !this.washerFeedback.validateRating()) {
+		if (this.washerFeedback != null && !this.washerFeedback.validateRating()) {
 			throw new RatingOutOfRangeException("washer");
 		}
 	}
-	
-	
-	
+
 }

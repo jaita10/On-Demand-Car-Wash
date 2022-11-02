@@ -15,13 +15,28 @@ const CarService = {
       .get("http://localhost:8100/users/car/filter")
       .then((response) => response.data)
       .catch((error) => console.log(error));
-      console.log(data);
-      return data;
+    console.log(data);
+    return data;
   },
 
   addCar: async (carpack) => {
     const data = await axios
       .post("http://localhost:8100/users/pack/add", carpack)
+      .then((response) => response.data)
+      .catch((error) => console.log(error));
+    console.log(data);
+    return data;
+  },
+
+  getCarTypeById: async (id) => {
+    let config = {
+      headers: {
+        "Content-Type": "text/plain",
+      },
+    };
+    
+    const data = await axios
+      .post("http://localhost:8100/users/car/TypeById", id, config)
       .then((response) => response.data)
       .catch((error) => console.log(error));
     console.log(data);
