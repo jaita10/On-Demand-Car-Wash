@@ -66,15 +66,16 @@ const Cars = (props) => {
               {/* <label for="exampleColorInput" className="form-label">
                 Color picker
               </label> */}
-              <p className="py-0 px-2">
-                <input
+              <p className="py-0 px-2 fs-5">
+                {/* <input
                   type="color"
                   className="form-control form-control-color "
                   id="exampleColorInput"
                   value={element.carColor}
                   title="Choose your color"
                   disabled
-                />
+                /> */}
+                {element.carColor} Color
               </p>
               <p className="fs-5 py-0 px-2">{element.carNumber}</p>
               <p className="d-flex justify-content-between">

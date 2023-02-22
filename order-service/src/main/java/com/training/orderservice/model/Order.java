@@ -219,5 +219,8 @@ public class Order {
 			throw new RatingOutOfRangeException("washer");
 		}
 	}
+	
+	
+	
 
 }

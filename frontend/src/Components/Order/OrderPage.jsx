@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Secrets } from "../../Constants/Secrets";
 import OrderService from "../../Service/OrderService";
 import AddOnOrder from "./AddOnOrder";
 import CarOrder from "./CarOder";
 import WashPackOrder from "./WashPackOrder";
 
 const OrderPage = (props) => {
+  const [indicator, setIndicator] = useState("blank");
+  const [message, setMessage] = useState("");
+  const user = useSelector((state) => state.user);
   const { washpack, addonpack: addonList } = useSelector((state) => state);
   const car = useSelector((state) => state.carpack);
 
@@ -24,19 +28,61 @@ const OrderPage = (props) => {
     return total;
   };
 
-  const handleCheckout = async () => {
+  const handleBook = async () => {
     const order = {
       carId: car.carId,
       washPackId: washpack.washpackId,
-      addOnIdList: {stringList : addonList.map((addon) => addon.addonId)},
+      addOnIdList: { stringList: addonList.map((addon) => addon.addonId) },
       amount: calculateTotal(),
       orderStatus: "PENDING",
       carType: car.carType,
       washpackTitle: washpack.washpackTitle,
-    }
+    };
     console.log(order);
     await OrderService.addOrder(order);
     navigate("/user/orderlist");
+  };
+
+  const orderIsInvalid = () => {
+    if (car.carId === null) {
+      setMessage("Please select a car to proceed");
+    } else if (washpack.washPackId === "0") {
+      setMessage("Please select a Wash Pack to proceed");
+    } else {
+      return false;
+    }
+    setIndicator("message");
+    return true;
+  };
+
+  const handleCheckout = async () => {
+    setIndicator("spinner");
+    if (orderIsInvalid()) return;
+    await handlePay();
+  };
+
+  const handlePay = async () => {
+    const paymentAmount = 100 * calculateTotal();
+    const paymentOrder = await OrderService.getRazorPayOrder(paymentAmount);
+    const options = {
+      key: Secrets.getRazorPayKeyId(),
+      amount: paymentAmount,
+      currency: "INR",
+      name: "CARWASH",
+      order_id: paymentOrder.id,
+      handler: handleBook,
+      prefill: {
+        name: `${user.firstName} ${user.lastName}`,
+        email: user.email,
+        contact: user.phoneNumber,
+      },
+    };
+
+    const razorpay = new window.Razorpay(options);
+    razorpay.on("payment.failed", (response) => {
+      alert(response.error.description);
+    });
+    razorpay.open();
   };
 
   const handleCancel = async () => {

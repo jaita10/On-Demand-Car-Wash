@@ -6,15 +6,29 @@ const CarOrder = (props) => {
   return (
     <>
       <div className="container-fluid border mb-3">
-        {/* <div className="row">
-            <div className="col">car picture</div>
-            <div className="col">car details</div>
-          </div> */}
-        <div className="row">
-          <div className="col">
-            {props.car.carType ||  "No Car Type Selected"} <br />{" "}
-            {props.car.carColor ||  "No Car Color Selected"} <br />{" "}
-            {props.car.carNumber ||  "No Car Number Selected"}
+        <div className="row m-2">
+          <div
+            className="col-5 ms-1"
+            style={{
+              backgroundImage: `url(/carimages/car_6.jpg)`,
+              backgroundSize: "100%",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+            }}
+          ></div>
+          <div className="col ms-3 my-3">
+            <div className="row mb-2 fs-bold">
+              {props.car.carType || "No Car Type Selected"} <br />{" "}
+            </div>
+            <div className="row mb-2 fs-bold">
+            {props.car.carColor || "No Car Color Selected"} <br />{" "}
+            </div>
+            <div className="row mb-2 fs-bold">
+            {props.car.carNumber || "No Car Number Selected"}
+            </div>
+            {/* {props.car.carType || "No Car Type Selected"} <br />{" "}
+            {props.car.carColor || "No Car Color Selected"} <br />{" "}
+            {props.car.carNumber || "No Car Number Selected"} */}
           </div>
           <div className="col-2 d-flex align-items-center">
             <Link

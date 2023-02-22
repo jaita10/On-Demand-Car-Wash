@@ -22,6 +22,8 @@ public class Car {
 	
 	private static List<String> validCarTypes = Arrays.asList("SEDAN" , "SUV" , "LUXURY" , "PREMIUM" , "EXOTIC" , "MUV" , "HATCHBACK" );
 	
+	private static List<String> validCarColors = Arrays.asList("BLACK","PINK","YELLOW","WHITE","GREEN","BLUE","RED","GREY","BROWN","PURPLE");
+	
 	public Car() {}
 
 	public Car(String carId, String customerId, String carType, String carColor, String carNumber) {
@@ -92,14 +94,19 @@ public class Car {
 	}
 	
 	
+//	public void validateCarColor() throws InvalidCarColorException{
+//		if(this.carColor.matches("^#[A-F0-9]{6}")) {
+//			return;
+//		}
+//		throw new InvalidCarColorException(this.carColor);
+//	}
+	
 	public void validateCarColor() throws InvalidCarColorException{
-		if(this.carColor.matches("^#[A-F0-9]{6}")) {
+		if(validCarColors.contains(this.carColor)) {
 			return;
 		}
 		throw new InvalidCarColorException(this.carColor);
 	}
-	
-	
 	
 	
 	

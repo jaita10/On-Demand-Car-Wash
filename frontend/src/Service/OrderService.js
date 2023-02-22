@@ -46,6 +46,17 @@ const OrderService = {
     console.log(data);
     return data;
   },
+
+  getRazorPayOrder: async (amount) => {
+    const request = { amount: amount, currency: "INR" };
+
+    const data = await axios
+      .post("http://localhost:8100/orders/razorpay", request)
+      .then((response) => response.data)
+      .catch((error) => console.log(error));
+    console.log(data);
+    return data;
+  },
 };
 
 export default OrderService;

@@ -76,33 +76,52 @@ const CarAdd = (props) => {
       </div>
 
       <div className="row mb-3 m-3">
-        <div className="row mt-5 mb-3">
-          <input
-            onChange={handleType}
-            value={type}
-            type="text"
-            className="login-input d-block m-auto p-2 fs-4 text-center w-50 rounded"
-            placeholder="Car Type"
-            required={true}
-          />
+        <div className="row mt-3 mb-3">
+          <label
+            className="col-auto fw-bold fs-4 m-3 ps-5 text-center "
+            htmlFor="carTypeInput"
+          >
+            CAR TYPE :{" "}
+          </label>
+          <div className="col">
+            <input
+              onChange={handleType}
+              value={type}
+              type="text"
+              className="login-input d-block m-3 p-2 fs-4 text-center w-50 rounded"
+              placeholder="CAR TYPE"
+              required={true}
+            />
+          </div>
         </div>
 
-        <div className="row mt-4 mb-3 justify-content-center">
+        <div className="row mt-3 mb-3">
           <label
-            className="col-auto fw-bold fs-4 m-3 text-center"
+            className="col-auto fw-bold fs-4 m-3 ps-5 text-center "
             htmlFor="carColorInput"
-          > 
+          >
             SELECT YOUR CAR COLOR :{" "}
           </label>
-          <input
-            onChange={handleColor}
-            type="color"
-            className="col-2 form-control form-control-color mt-3 d-inline-block"
-            id="carColorInput"
-            value={color}
-            title="Choose your color"
-            placeholder="Car Color"
-          />
+          <div className="col">
+            <select
+              className="form-select d-block m-3 fs-5 ps-0 text-center w-60 rounded"
+              aria-label="Default select example"
+              onChange={handleColor}
+              value={color}
+            >
+              <option defaultValue={null}>CAR COLOR</option>
+              <option value="BLACK">BLACK</option>
+              <option value="PINK">PINK</option>
+              <option value="YELLOW">YELLOW</option>
+              <option value="WHITE">WHITE</option>
+              <option value="GREEN">GREEN</option>
+              <option value="BLUE">BLUE</option>
+              <option value="RED">RED</option>
+              <option value="GREY">GREY</option>
+              <option value="BROWN">BROWN</option>
+              <option value="PURPLE">PURPLE</option>
+            </select>
+          </div>
 
           {/* <input
             value={color}
@@ -113,13 +132,21 @@ const CarAdd = (props) => {
         </div>
 
         <div className="row mt-4 mb-3">
-          <input
-            onChange={handleNumber}
-            value={number}
-            type="text"
-            className="login-input d-block m-auto p-2 fs-4 text-center w-50 rounded"
-            placeholder="Car Number"
-          />
+          <label
+            className="col-auto fw-bold fs-4 m-3 ps-5 text-center "
+            htmlFor="carNumberInput"
+          >
+            CAR NUMBER :{" "}
+          </label>
+          <div className="col">
+            <input
+              onChange={handleNumber}
+              value={number}
+              type="text"
+              className="login-input d-block m-auto p-2 fs-4 text-center w-50 rounded"
+              placeholder="CAR NUMBER"
+            />
+          </div>
         </div>
       </div>
 

@@ -12,7 +12,7 @@ const WashPackOrder = (props) => {
           <div
             className="col-5 ms-2"
             style={{
-              backgroundImage: `url(/washimages/WashPack_1.jpg)`,
+              backgroundImage: `url(/washimages/WashPack_8.jpg)`,
               backgroundSize: "contain",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
@@ -25,13 +25,13 @@ const WashPackOrder = (props) => {
                 : "No Wash Title Selected"}{" "}
               <br />{" "}
             </div>
-            <div className="row mb-2">
+            <div className="row mb-2 fs-bold">
               {washpack.washpackDescription
                 ? washpack.washpackDescription
                 : "No Wash Description Selected"}{" "}
               <br />{" "}
             </div>
-            <div className="row mb-2">
+            <div className="row mb-2 fs-bold">
               {washpack.washpackPrice
                 ? washpack.washpackPrice
                 : "No Wash Price Selected"}
